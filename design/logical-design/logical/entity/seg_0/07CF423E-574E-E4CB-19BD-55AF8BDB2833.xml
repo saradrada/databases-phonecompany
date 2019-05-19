@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="07CF423E-574E-E4CB-19BD-55AF8BDB2833" name="Producto">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-17 23:33:40 UTC</createdTime>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<engineerTo>
+<item key="CDB8FD79-3F92-B79B-8D86-B92777F5779E" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="codigo" id="24CB1DB1-4D9C-0703-65B9-AFD59D851ACF">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-17 23:33:48 UTC</createdTime>
+<commentInRDBMS>Codigo del producto.</commentInRDBMS>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<engineerTo>
+<item key="CDB8FD79-3F92-B79B-8D86-B92777F5779E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="descripcion" id="C9460E41-61C3-ACED-7F51-D8C08F919130">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-17 23:34:08 UTC</createdTime>
+<commentInRDBMS>Descripcion del producto.</commentInRDBMS>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<engineerTo>
+<item key="CDB8FD79-3F92-B79B-8D86-B92777F5779E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="218A5B3E-CCE2-D7ED-8BAC-5803BF1F6AB4" name="Producto PK">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-17 23:34:00 UTC</createdTime>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<engineerTo>
+<item key="CDB8FD79-3F92-B79B-8D86-B92777F5779E" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>24CB1DB1-4D9C-0703-65B9-AFD59D851ACF</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Solicitud_Asignacion" directorySegmentName="seg_0" id="F9F78156-FB51-B4C0-CFB9-4CB19BFD6F69">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-17 23:42:30 UTC</createdTime>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<engineerTo>
+<item key="3C63C1D6-215A-01FF-22F8-1441489D91B7" value="true"/>
+</engineerTo>
+<sourcePk>23E5C10B-75A8-65B3-81D7-EA08A071EC25</sourcePk>
+<targetPk>4AE1DCE1-D176-8E35-E673-D7080D4B60E5</targetPk>
+<dominantRole>23F00117-40F7-9625-A9C6-8A1B06F5372F</dominantRole>
+<identifying>true</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>23F00117-40F7-9625-A9C6-8A1B06F5372F</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>F4F49A9F-0F2E-79C3-36E9-396C653CB804</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
