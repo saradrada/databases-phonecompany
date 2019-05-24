@@ -1,5 +1,5 @@
 -- Generado por Oracle SQL Developer Data Modeler 18.3.0.268.1208
---   en:        2019-05-24 14:54:46 COT
+--   en:        2019-05-24 15:21:17 COT
 --   sitio:      Oracle Database 11g
 --   tipo:      Oracle Database 11g
 
@@ -23,12 +23,13 @@ CREATE TABLE asignacion (
 --  Fecha de la asignacion
     fecha                       DATE NOT NULL,
     solicitud_numerosolicitud   VARCHAR2(30) NOT NULL,
-    funcionario_id              VARCHAR2(30) NOT NULL,
-    solicitud_cliente_cedula    VARCHAR2(30) NOT NULL
+    funcionario_cedula          VARCHAR2(30) NOT NULL
 );
 
-ALTER TABLE asignacion ADD CONSTRAINT asignacion_pk PRIMARY KEY ( solicitud_numerosolicitud,
-                                                                  solicitud_cliente_cedula );
+CREATE UNIQUE INDEX asignacion__idx ON
+    asignacion (
+        solicitud_numerosolicitud
+    ASC );
 
 CREATE TABLE cliente (
     id                 VARCHAR2(30) NOT NULL,
@@ -94,7 +95,7 @@ COMMENT ON COLUMN funcionario.fecha_nacimiento IS
 COMMENT ON COLUMN funcionario.telefono IS
     'Telefono del funcionario.';
 
-ALTER TABLE funcionario ADD CONSTRAINT funcionario_pk PRIMARY KEY ( id );
+ALTER TABLE funcionario ADD CONSTRAINT funcionario_pk PRIMARY KEY ( cedula );
 
 CREATE TABLE producto (
     codigo        VARCHAR2(30) NOT NULL,
@@ -146,8 +147,7 @@ COMMENT ON COLUMN solicitud.observacion IS
 COMMENT ON COLUMN solicitud.estado IS
     'Estado de la solicitud.';
 
-ALTER TABLE solicitud ADD CONSTRAINT solicitud_pk PRIMARY KEY ( numerosolicitud,
-                                                                cliente_cedula );
+ALTER TABLE solicitud ADD CONSTRAINT solicitud_pk PRIMARY KEY ( numerosolicitud );
 
 CREATE TABLE tipo (
     tipo          VARCHAR2(30) NOT NULL,
@@ -163,10 +163,12 @@ COMMENT ON COLUMN tipo.descripcion IS
 ALTER TABLE tipo ADD CONSTRAINT tipo_pk PRIMARY KEY ( tipo );
 
 ALTER TABLE asignacion
-    ADD CONSTRAINT asignacion_solicitud_fk FOREIGN KEY ( solicitud_numerosolicitud,
-                                                         solicitud_cliente_cedula )
-        REFERENCES solicitud ( numerosolicitud,
-                               cliente_cedula );
+    ADD CONSTRAINT asignacion_funcionario_fk FOREIGN KEY ( funcionario_cedula )
+        REFERENCES funcionario ( cedula );
+
+ALTER TABLE asignacion
+    ADD CONSTRAINT asignacion_solicitud_fk FOREIGN KEY ( solicitud_numerosolicitud )
+        REFERENCES solicitud ( numerosolicitud );
 
 ALTER TABLE productocliente
     ADD CONSTRAINT productocliente_cliente_fk FOREIGN KEY ( cliente_cedula )
@@ -188,19 +190,12 @@ ALTER TABLE solicitud
     ADD CONSTRAINT solicitud_tipo_fk FOREIGN KEY ( tipo_tipo )
         REFERENCES tipo ( tipo );
 
-ALTER TABLE asignacion
-    ADD CONSTRAINT asignacion_funcionario_fk FOREIGN KEY ( funcionario_id )
-        REFERENCES funcionario ( id );
-
-
-
-
 
 -- Informe de Resumen de Oracle SQL Developer Data Modeler: 
 -- 
 -- CREATE TABLE                             7
--- CREATE INDEX                             0
--- ALTER TABLE                             21
+-- CREATE INDEX                             1
+-- ALTER TABLE                             20
 -- CREATE VIEW                              0
 -- ALTER VIEW                               0
 -- CREATE PACKAGE                           0
