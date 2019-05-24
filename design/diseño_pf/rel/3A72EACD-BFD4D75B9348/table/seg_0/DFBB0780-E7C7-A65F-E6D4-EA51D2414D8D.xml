@@ -1,0 +1,52 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DFBB0780-E7C7-A65F-E6D4-EA51D2414D8D" name="Tipo">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<generatorID>958A1AA1-987F-D692-F0EE-015748F78C5E</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="tipo" id="8B618720-B9D8-A689-E45E-8A432A2891A7">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<commentInRDBMS>Tipo de la solicitud.</commentInRDBMS>
+<generatorID>E13F3E83-12FA-4FFB-CA94-A50C08197658</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="descripcion" id="A3AAA95A-0AAC-A613-2F1E-29803918272D">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<commentInRDBMS>Descripcion de la solicitud.</commentInRDBMS>
+<generatorID>A3ED81C5-033D-D9D0-229F-C4D59E9A085C</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1A8C0640-4925-570E-B7DD-3FA38CA27FAE" name="Tipo_PK">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<generatorID>717EACCC-CCC3-BE16-47AE-D4920C5F4508</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8B618720-B9D8-A689-E45E-8A432A2891A7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,110 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A1C86AFD-A931-3E3E-7C66-CD608843E399" name="Asignacion">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<generatorID>F4F49A9F-0F2E-79C3-36E9-396C653CB804</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="fecha" id="DAFEEA64-6B5F-7E99-94B6-1588E9CA8FFC">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<comment>Fecha de la asignacion</comment>
+<generatorID>21F56512-0BC4-3A24-5A0D-08D43B363369</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Solicitud_numeroSolicitud" id="F70A76B1-40BB-019C-600B-CB21F40A5B2D">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<generatorID>D344DC4C-6299-9D30-676C-F6A9D07A97D8</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7BAE9EF3-AA9A-2E68-4274-88CA6F350CD2" referredColumn="ED1DF7D4-7577-2E52-448E-6AD02A806322"/>
+</associations>
+</Column>
+<Column name="Funcionario_id" id="889E88E1-E1FB-40D1-4DC7-FDB8CC0F92AF">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<generatorID>F705CBD3-14FB-E4C4-6CFD-8DBEFACBD4A6</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6CFCD431-0CD7-E607-BC67-8033DF891023" referredColumn="161A5F93-0D31-2345-DC82-5BC7E3F4C65E"/>
+</associations>
+</Column>
+<Column name="Solicitud_Cliente_cedula" id="E45EAF09-62DC-0408-DFDB-90A8EA920D95">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<generatorID>E0CAFF72-300F-AD74-0D71-037529D68E3E</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7BAE9EF3-AA9A-2E68-4274-88CA6F350CD2" referredColumn="40CBAF7D-E412-F568-C131-2F097B572884"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="66365117-5C11-EDB1-C2C4-3E4BC64AC041" name="Asignacion_PK">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<generatorID>4AE1DCE1-D176-8E35-E673-D7080D4B60E5</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F70A76B1-40BB-019C-600B-CB21F40A5B2D"/>
+<colUsage columnID="E45EAF09-62DC-0408-DFDB-90A8EA920D95"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="23FF9ECC-F270-51BE-AA9B-31FF64F5A4DD" name="Asignacion_Funcionario_FK">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<generatorID>68C7F01D-BF33-3D76-F701-38179188529B</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="889E88E1-E1FB-40D1-4DC7-FDB8CC0F92AF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="382D1C2A-4563-0463-38D3-5114F7251F54" name="Asignacion_Solicitud_FK">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<generatorID>F9F78156-FB51-B4C0-CFB9-4CB19BFD6F69</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F70A76B1-40BB-019C-600B-CB21F40A5B2D"/>
+<colUsage columnID="E45EAF09-62DC-0408-DFDB-90A8EA920D95"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

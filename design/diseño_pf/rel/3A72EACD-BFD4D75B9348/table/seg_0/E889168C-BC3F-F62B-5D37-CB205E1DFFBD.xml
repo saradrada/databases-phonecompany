@@ -1,0 +1,116 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E889168C-BC3F-F62B-5D37-CB205E1DFFBD" name="Funcionario">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<generatorID>51922735-05F2-5FA9-B291-2C770CF16A52</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="161A5F93-0D31-2345-DC82-5BC7E3F4C65E">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<commentInRDBMS>Identificacion del funcionario.</commentInRDBMS>
+<generatorID>17B9DFB7-B441-131A-2ED8-BC8051DE1282</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre" id="25323152-3D81-54ED-AED4-B358355A4172">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<commentInRDBMS>Nombre del funcionario</commentInRDBMS>
+<generatorID>EE4FC27C-FADF-1BB4-4BB7-2428AA553149</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="contraseña" id="69D437BF-4446-6805-F1F2-F8BE4FA24436">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<commentInRDBMS>Contraseña del funcionario.</commentInRDBMS>
+<generatorID>F5E8A990-7028-F579-F75E-FC3685F6563E</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cedula" id="0542441F-6E59-7205-E201-564AC65E9B62">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<commentInRDBMS>Cedula del funcionario.</commentInRDBMS>
+<generatorID>2DE353AA-081D-EF12-813F-2807919EFED9</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="direccion" id="A6D28E45-3602-A415-DEE0-0BE4C8AF79F8">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<commentInRDBMS>Direccion del funcionario.</commentInRDBMS>
+<generatorID>CDAC7F37-3962-004B-C630-03B8AB769CA1</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha_nacimiento" id="6AB7047B-21E5-4C86-2782-74E4440F1103">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<commentInRDBMS>Fecha de nacimiento del funcionario.</commentInRDBMS>
+<generatorID>5D050541-EE2E-3B22-8515-F1386BA505B0</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="telefono" id="907B324A-79CB-F5C0-D04E-95E68F32D153">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<commentInRDBMS>Telefono del funcionario.</commentInRDBMS>
+<generatorID>B3BE9B99-0686-CDF5-76AB-396DBFCB3A43</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D77B3ADB-E54B-FF1B-35C4-80F942FC8743" name="Funcionario_PK">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<generatorID>622008DE-2030-506D-B754-6D6B2A530AB8</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="161A5F93-0D31-2345-DC82-5BC7E3F4C65E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

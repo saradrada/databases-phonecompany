@@ -1,0 +1,103 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="59D32EB9-15FC-B8F8-D047-2C6CB6773385" name="ProductoCliente">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-17 23:15:09 UTC</createdTime>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<engineerTo>
+<item key="3A72EACD-B6CB-F271-08C8-BFD4D75B9348" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="numeroProducto" id="12E4F15A-E73A-AF91-A9F1-C1D0329E9E18">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-17 23:15:16 UTC</createdTime>
+<commentInRDBMS>Numero de producto.</commentInRDBMS>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<engineerTo>
+<item key="3A72EACD-B6CB-F271-08C8-BFD4D75B9348" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha_citacion" id="8CE470E0-C351-DD77-3E5E-F371E18600CB">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-17 23:19:15 UTC</createdTime>
+<commentInRDBMS>Fecha de la citacion del proyecto.</commentInRDBMS>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<engineerTo>
+<item key="3A72EACD-B6CB-F271-08C8-BFD4D75B9348" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha_retiro" id="2C7CC388-683C-9ABA-EB5F-AD18D5671322">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-17 23:33:18 UTC</createdTime>
+<commentInRDBMS>Fecha de retiro.</commentInRDBMS>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<engineerTo>
+<item key="3A72EACD-B6CB-F271-08C8-BFD4D75B9348" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="codigo" id="48A46E19-6DAE-7C22-6F88-F15F085F5705">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-17 23:41:48 UTC</createdTime>
+<generatorID>878AAD53-65E0-3EFC-3FE9-1DBDED73128A</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<engineerTo>
+<item key="3A72EACD-B6CB-F271-08C8-BFD4D75B9348" value="true"/>
+</engineerTo>
+<referedAttribute>24CB1DB1-4D9C-0703-65B9-AFD59D851ACF</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cedula" id="39568223-6B84-DEB2-36B3-ACF7F5323EC1">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:44:01 UTC</createdTime>
+<generatorID>A07C8D20-40B6-772A-F958-6D861676D2AD</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<engineerTo>
+<item key="3A72EACD-B6CB-F271-08C8-BFD4D75B9348" value="true"/>
+</engineerTo>
+<referedAttribute>CB6A81EE-E338-4867-9AE8-BE901BE0518F</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="6F9735C0-10C2-3DA1-692D-DF28E3A8E5D8" name="ProductoCliente PK">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-17 23:41:19 UTC</createdTime>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<engineerTo>
+<item key="3A72EACD-B6CB-F271-08C8-BFD4D75B9348" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>12E4F15A-E73A-AF91-A9F1-C1D0329E9E18</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

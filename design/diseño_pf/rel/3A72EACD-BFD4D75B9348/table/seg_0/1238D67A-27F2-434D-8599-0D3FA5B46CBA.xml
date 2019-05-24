@@ -1,0 +1,116 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1238D67A-27F2-434D-8599-0D3FA5B46CBA" name="Cliente">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<generatorID>C68BB5C0-F273-006B-9EA2-6A6A286F13D2</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="AA642A0F-FAC5-D7D5-FEC7-7082392B3662">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<commentInRDBMS>Identificador del cliente.</commentInRDBMS>
+<generatorID>7BFE93FD-35B5-4F79-860C-A49C88265729</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre" id="BE2CE39D-5A52-AF00-9724-7FCF4C19AA78">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<commentInRDBMS>Nombre del cliente.</commentInRDBMS>
+<generatorID>C3A284E6-B316-14EF-E002-E6CD91114F59</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="contraseña" id="7549FC18-3214-2D5A-0686-24A2047B65D0">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<commentInRDBMS>Contraseña del cliente.</commentInRDBMS>
+<generatorID>59520C09-4BA9-8241-00C0-8CAF09DFB906</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cedula" id="DA97EF80-BBA8-5D1F-F28B-2C63448EFA61">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<commentInRDBMS>Cedula del cliente. Identificador.</commentInRDBMS>
+<generatorID>CB6A81EE-E338-4867-9AE8-BE901BE0518F</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="direccion" id="BEA13561-7C1E-814B-782A-5B76174658DF">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<commentInRDBMS>Direccion del cliente.</commentInRDBMS>
+<generatorID>19FBA2C3-DA80-16EB-3FB7-6E2A7A5036C3</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha_nacimiento" id="0D2A9A5D-339D-7200-D77A-73C507DE7BD0">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<commentInRDBMS>Fecha de nacimiento del cliente.</commentInRDBMS>
+<generatorID>CD0625D9-7098-143C-8B36-9BE2D0BE1266</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="telefono" id="7B2B7F96-6D24-7D59-4EA2-81B01C0EA33D">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<commentInRDBMS>Telefono del cliente.</commentInRDBMS>
+<generatorID>244EB156-C85D-BC6A-FBA9-C3A4C64B88E6</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3BF9DEBC-85C8-DDDC-B24D-FC1DE6C19B64" name="Cliente_PK">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<generatorID>067E64BF-51E2-D1F8-AD3E-F072EE14A434</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DA97EF80-BBA8-5D1F-F28B-2C63448EFA61"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,130 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C68BB5C0-F273-006B-9EA2-6A6A286F13D2" name="Cliente">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-17 22:48:27 UTC</createdTime>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<engineerTo>
+<item key="3A72EACD-B6CB-F271-08C8-BFD4D75B9348" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="7BFE93FD-35B5-4F79-860C-A49C88265729">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-17 23:08:40 UTC</createdTime>
+<commentInRDBMS>Identificador del cliente.</commentInRDBMS>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<engineerTo>
+<item key="3A72EACD-B6CB-F271-08C8-BFD4D75B9348" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nombre" id="C3A284E6-B316-14EF-E002-E6CD91114F59">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-17 23:09:02 UTC</createdTime>
+<commentInRDBMS>Nombre del cliente.</commentInRDBMS>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<engineerTo>
+<item key="3A72EACD-B6CB-F271-08C8-BFD4D75B9348" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="contraseña" id="59520C09-4BA9-8241-00C0-8CAF09DFB906">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-17 23:09:25 UTC</createdTime>
+<commentInRDBMS>Contraseña del cliente.</commentInRDBMS>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<engineerTo>
+<item key="3A72EACD-B6CB-F271-08C8-BFD4D75B9348" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cedula" id="CB6A81EE-E338-4867-9AE8-BE901BE0518F">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-17 23:09:48 UTC</createdTime>
+<commentInRDBMS>Cedula del cliente. Identificador.</commentInRDBMS>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<engineerTo>
+<item key="3A72EACD-B6CB-F271-08C8-BFD4D75B9348" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="direccion" id="19FBA2C3-DA80-16EB-3FB7-6E2A7A5036C3">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-17 23:10:43 UTC</createdTime>
+<commentInRDBMS>Direccion del cliente.</commentInRDBMS>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<engineerTo>
+<item key="3A72EACD-B6CB-F271-08C8-BFD4D75B9348" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha_nacimiento" id="CD0625D9-7098-143C-8B36-9BE2D0BE1266">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-17 23:11:21 UTC</createdTime>
+<commentInRDBMS>Fecha de nacimiento del cliente.</commentInRDBMS>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<engineerTo>
+<item key="3A72EACD-B6CB-F271-08C8-BFD4D75B9348" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="telefono" id="244EB156-C85D-BC6A-FBA9-C3A4C64B88E6">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-17 23:11:43 UTC</createdTime>
+<commentInRDBMS>Telefono del cliente.</commentInRDBMS>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<engineerTo>
+<item key="3A72EACD-B6CB-F271-08C8-BFD4D75B9348" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="067E64BF-51E2-D1F8-AD3E-F072EE14A434" name="Cliente PK">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-17 23:08:44 UTC</createdTime>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<engineerTo>
+<item key="3A72EACD-B6CB-F271-08C8-BFD4D75B9348" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>CB6A81EE-E338-4867-9AE8-BE901BE0518F</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

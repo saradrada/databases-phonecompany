@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="D6151974-5770-6275-CAA2-D809C12062FF" containerWithKeyObject="331980CC-DE31-7B1D-280A-33C276AC0FAF" localFKIndex="559A7F40-AE35-5F83-62C3-D6600CF3523E" name="Solicitud_Cliente_FK">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<generatorID>9CB7B2A0-D3F7-D233-71FF-1E2406C4CC78</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<referredTableLongName>Cliente</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>1238D67A-27F2-434D-8599-0D3FA5B46CBA</referredTableID>
+<keyObject>3BF9DEBC-85C8-DDDC-B24D-FC1DE6C19B64</keyObject>
+<referredKeyID>3BF9DEBC-85C8-DDDC-B24D-FC1DE6C19B64</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>cedula</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

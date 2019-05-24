@@ -1,21 +1,34 @@
 -- Generado por Oracle SQL Developer Data Modeler 18.3.0.268.1208
---   en:        2019-05-17 18:54:52 COT
+--   en:        2019-05-24 14:54:46 COT
 --   sitio:      Oracle Database 11g
 --   tipo:      Oracle Database 11g
 
 
 
+DROP TABLE asignacion CASCADE CONSTRAINTS;
+
+DROP TABLE cliente CASCADE CONSTRAINTS;
+
+DROP TABLE funcionario CASCADE CONSTRAINTS;
+
+DROP TABLE producto CASCADE CONSTRAINTS;
+
+DROP TABLE productocliente CASCADE CONSTRAINTS;
+
+DROP TABLE solicitud CASCADE CONSTRAINTS;
+
+DROP TABLE tipo CASCADE CONSTRAINTS;
+
 CREATE TABLE asignacion ( 
 --  Fecha de la asignacion
     fecha                       DATE NOT NULL,
     solicitud_numerosolicitud   VARCHAR2(30) NOT NULL,
-    funcionario_id              VARCHAR2(30) NOT NULL
+    funcionario_id              VARCHAR2(30) NOT NULL,
+    solicitud_cliente_cedula    VARCHAR2(30) NOT NULL
 );
 
-CREATE UNIQUE INDEX asignacion__idx ON
-    asignacion (
-        solicitud_numerosolicitud
-    ASC );
+ALTER TABLE asignacion ADD CONSTRAINT asignacion_pk PRIMARY KEY ( solicitud_numerosolicitud,
+                                                                  solicitud_cliente_cedula );
 
 CREATE TABLE cliente (
     id                 VARCHAR2(30) NOT NULL,
@@ -37,7 +50,7 @@ COMMENT ON COLUMN cliente.contraseña IS
     'Contraseña del cliente.';
 
 COMMENT ON COLUMN cliente.cedula IS
-    'Cedula del cliente.';
+    'Cedula del cliente. Identificador.';
 
 COMMENT ON COLUMN cliente.direccion IS
     'Direccion del cliente.';
@@ -48,7 +61,7 @@ COMMENT ON COLUMN cliente.fecha_nacimiento IS
 COMMENT ON COLUMN cliente.telefono IS
     'Telefono del cliente.';
 
-ALTER TABLE cliente ADD CONSTRAINT cliente_pk PRIMARY KEY ( id );
+ALTER TABLE cliente ADD CONSTRAINT cliente_pk PRIMARY KEY ( cedula );
 
 CREATE TABLE funcionario (
     id                 VARCHAR2(30) NOT NULL,
@@ -100,8 +113,8 @@ CREATE TABLE productocliente (
     numeroproducto    VARCHAR2(30) NOT NULL,
     fecha_citacion    DATE NOT NULL,
     fecha_retiro      DATE NOT NULL,
-    cliente_id        VARCHAR2(30) NOT NULL,
-    producto_codigo   VARCHAR2(30) NOT NULL
+    producto_codigo   VARCHAR2(30) NOT NULL,
+    cliente_cedula    VARCHAR2(30) NOT NULL
 );
 
 COMMENT ON COLUMN productocliente.numeroproducto IS
@@ -113,13 +126,15 @@ COMMENT ON COLUMN productocliente.fecha_citacion IS
 COMMENT ON COLUMN productocliente.fecha_retiro IS
     'Fecha de retiro.';
 
+ALTER TABLE productocliente ADD CONSTRAINT productocliente_pk PRIMARY KEY ( numeroproducto );
+
 CREATE TABLE solicitud (
     numerosolicitud   VARCHAR2(30) NOT NULL,
     observacion       VARCHAR2(50) NOT NULL,
     estado            VARCHAR2(30) NOT NULL,
-    cliente_id        VARCHAR2(30) NOT NULL,
     producto_codigo   VARCHAR2(30) NOT NULL,
-    tipo_tipo         VARCHAR2(30) NOT NULL
+    tipo_tipo         VARCHAR2(30) NOT NULL,
+    cliente_cedula    VARCHAR2(30) NOT NULL
 );
 
 COMMENT ON COLUMN solicitud.numerosolicitud IS
@@ -131,7 +146,8 @@ COMMENT ON COLUMN solicitud.observacion IS
 COMMENT ON COLUMN solicitud.estado IS
     'Estado de la solicitud.';
 
-ALTER TABLE solicitud ADD CONSTRAINT solicitud_pk PRIMARY KEY ( numerosolicitud );
+ALTER TABLE solicitud ADD CONSTRAINT solicitud_pk PRIMARY KEY ( numerosolicitud,
+                                                                cliente_cedula );
 
 CREATE TABLE tipo (
     tipo          VARCHAR2(30) NOT NULL,
@@ -147,24 +163,22 @@ COMMENT ON COLUMN tipo.descripcion IS
 ALTER TABLE tipo ADD CONSTRAINT tipo_pk PRIMARY KEY ( tipo );
 
 ALTER TABLE asignacion
-    ADD CONSTRAINT asignacion_funcionario_fk FOREIGN KEY ( funcionario_id )
-        REFERENCES funcionario ( id );
-
-ALTER TABLE asignacion
-    ADD CONSTRAINT asignacion_solicitud_fk FOREIGN KEY ( solicitud_numerosolicitud )
-        REFERENCES solicitud ( numerosolicitud );
+    ADD CONSTRAINT asignacion_solicitud_fk FOREIGN KEY ( solicitud_numerosolicitud,
+                                                         solicitud_cliente_cedula )
+        REFERENCES solicitud ( numerosolicitud,
+                               cliente_cedula );
 
 ALTER TABLE productocliente
-    ADD CONSTRAINT productocliente_cliente_fk FOREIGN KEY ( cliente_id )
-        REFERENCES cliente ( id );
+    ADD CONSTRAINT productocliente_cliente_fk FOREIGN KEY ( cliente_cedula )
+        REFERENCES cliente ( cedula );
 
 ALTER TABLE productocliente
     ADD CONSTRAINT productocliente_producto_fk FOREIGN KEY ( producto_codigo )
         REFERENCES producto ( codigo );
 
 ALTER TABLE solicitud
-    ADD CONSTRAINT solicitud_cliente_fk FOREIGN KEY ( cliente_id )
-        REFERENCES cliente ( id );
+    ADD CONSTRAINT solicitud_cliente_fk FOREIGN KEY ( cliente_cedula )
+        REFERENCES cliente ( cedula );
 
 ALTER TABLE solicitud
     ADD CONSTRAINT solicitud_producto_fk FOREIGN KEY ( producto_codigo )
@@ -178,37 +192,15 @@ ALTER TABLE asignacion
     ADD CONSTRAINT asignacion_funcionario_fk FOREIGN KEY ( funcionario_id )
         REFERENCES funcionario ( id );
 
-ALTER TABLE asignacion
-    ADD CONSTRAINT asignacion_solicitud_fk FOREIGN KEY ( solicitud_numerosolicitud )
-        REFERENCES solicitud ( numerosolicitud );
 
-ALTER TABLE productocliente
-    ADD CONSTRAINT productocliente_cliente_fk FOREIGN KEY ( cliente_id )
-        REFERENCES cliente ( id );
-
-ALTER TABLE productocliente
-    ADD CONSTRAINT productocliente_producto_fk FOREIGN KEY ( producto_codigo )
-        REFERENCES producto ( codigo );
-
-ALTER TABLE solicitud
-    ADD CONSTRAINT solicitud_cliente_fk FOREIGN KEY ( cliente_id )
-        REFERENCES cliente ( id );
-
-ALTER TABLE solicitud
-    ADD CONSTRAINT solicitud_producto_fk FOREIGN KEY ( producto_codigo )
-        REFERENCES producto ( codigo );
-
-ALTER TABLE solicitud
-    ADD CONSTRAINT solicitud_tipo_fk FOREIGN KEY ( tipo_tipo )
-        REFERENCES tipo ( tipo );
 
 
 
 -- Informe de Resumen de Oracle SQL Developer Data Modeler: 
 -- 
 -- CREATE TABLE                             7
--- CREATE INDEX                             1
--- ALTER TABLE                             19
+-- CREATE INDEX                             0
+-- ALTER TABLE                             21
 -- CREATE VIEW                              0
 -- ALTER VIEW                               0
 -- CREATE PACKAGE                           0

@@ -1,0 +1,117 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="77ACA7BE-D8C0-614D-991E-4DD0FC35C33B" name="ProductoCliente">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<generatorID>59D32EB9-15FC-B8F8-D047-2C6CB6773385</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="numeroProducto" id="E0D6FAE4-2907-5B87-42D4-D2484E32EED2">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<commentInRDBMS>Numero de producto.</commentInRDBMS>
+<generatorID>12E4F15A-E73A-AF91-A9F1-C1D0329E9E18</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha_citacion" id="EA0D9AEA-1E10-148F-4381-8E60F89558EC">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<commentInRDBMS>Fecha de la citacion del proyecto.</commentInRDBMS>
+<generatorID>8CE470E0-C351-DD77-3E5E-F371E18600CB</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha_retiro" id="5B728029-6A88-C17C-7C60-809EE4AC9B58">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<commentInRDBMS>Fecha de retiro.</commentInRDBMS>
+<generatorID>2C7CC388-683C-9ABA-EB5F-AD18D5671322</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Producto_codigo" id="6947F1AB-7287-EA9F-431F-978FCFDEA590">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<generatorID>48A46E19-6DAE-7C22-6F88-F15F085F5705</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5EF26E67-7848-CB27-4DDE-9EC83A21FFF3" referredColumn="AAE708FE-9766-B4F1-A92C-FB3FA10F8E11"/>
+</associations>
+</Column>
+<Column name="Cliente_cedula" id="F39DE8BB-076D-83FA-4929-172C61A9E926">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<generatorID>39568223-6B84-DEB2-36B3-ACF7F5323EC1</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="26DCC829-3B36-3D94-F32E-0B16812189A7" referredColumn="DA97EF80-BBA8-5D1F-F28B-2C63448EFA61"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C18603C9-76D2-2805-5D1D-6D4BF45A86AB" name="ProductoCliente_PK">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<generatorID>6F9735C0-10C2-3DA1-692D-DF28E3A8E5D8</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E0D6FAE4-2907-5B87-42D4-D2484E32EED2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F4F711C3-A102-3887-0989-7BC6F249EE7D" name="ProductoCliente_Cliente_FK">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<generatorID>A07C8D20-40B6-772A-F958-6D861676D2AD</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F39DE8BB-076D-83FA-4929-172C61A9E926"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5A1D7538-9E60-B9CB-AB66-1A981E7EF493" name="ProductoCliente_Producto_FK">
+<createdBy>1144089963</createdBy>
+<createdTime>2019-05-24 19:47:04 UTC</createdTime>
+<generatorID>878AAD53-65E0-3EFC-3FE9-1DBDED73128A</generatorID>
+<ownerDesignName>diseño_pf</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6947F1AB-7287-EA9F-431F-978FCFDEA590"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
