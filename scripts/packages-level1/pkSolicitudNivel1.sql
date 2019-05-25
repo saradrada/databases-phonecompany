@@ -6,9 +6,10 @@ PROCEDURE pModificarEstadoSolicitud(ivNumeroSolicitud VARCHAR2, ivEstado VARCHAR
 PROCEDURE pModificarClienteIdSolicitud(ivNumeroSolicitud VARCHAR2, ivCedulaCliente VARCHAR2);
 PROCEDURE pModificarProductoCodigoSolicitud(ivNumeroSolicitud VARCHAR2, ivProductoCodigo VARCHAR2);
 PROCEDURE pModificarTipoCodigoSolicitud(ivNumeroSolicitud VARCHAR2, ivTipoCodigo VARCHAR2);
-PROCEDURE pBorrarSolicitud(ivNumeroSolicitud VARCHAR2);
+PROCEDURE borrarSolicitud(ivNumeroSolicitud VARCHAR2);
 FUNCTION fConsultarSolicitud (ivNumeroSolicitud VARCHAR2) return varchar2;
-END pkSolicitud;
+END pkSolicitud;/
+
 
 
 CREATE OR REPLACE PACKAGE BODY pkSolicitud AS
@@ -58,7 +59,7 @@ END pInsertarSolicitud;
 
 
 
-PROCEDURE pBorrarSolicitud(ivNumeroSolicitud VARCHAR2)
+PROCEDURE borrarSolicitud(ivNumeroSolicitud VARCHAR2)
 IS
 BEGIN
 	DELETE
@@ -67,7 +68,7 @@ BEGIN
 	EXCEPTION
 	WHEN no_data_found THEN
 	RAISE_APPLICATION_ERROR(-20000,'No se encontro ninguna solicitud con el codigo: '||ivNumeroSolicitud);
-END pBorrarSolicitud;
+END borrarSolicitud;
 
 
 
@@ -77,8 +78,8 @@ BEGIN
 	UPDATE Solicitud
 	SET observacion = ivObservacion,
 		estado = ivEstado,
-		Cliente_cedula = ivCedulaCliente,
-		roducto_codigo = ivProductoCodigo,
+		cliente_id = ivCedulaCliente,
+		producto_codigo = ivProductoCodigo,
 		tipo_tipo = ivTipoCodigo
 	WHERE numerosolicitud = ivNumeroSolicitud;
 	EXCEPTION
