@@ -6,7 +6,8 @@ PROCEDURE pRegistrarSolicitudCancelacion ( ivProductoCodigo VARCHAR2 , ivCedulaC
 PROCEDURE pRegistrarSolicitudReclamo ( ivProductoCodigo VARCHAR2 , ivCedulaCliente VARCHAR2, ivObservacion VARCHAR2);
 FUNCTION fConsultarNumLibre return  VARCHAR2;
 
-END pkRegistro;/
+END pkRegistro;
+/
 
 
 
@@ -17,7 +18,7 @@ IS
 	ovNumero VARCHAR2(50);
 	vUltimaSolicitud VARCHAR2(50);	
 BEGIN
-	SELECT MAX(numSolicitud) INTO vUltimaSolicitud
+	SELECT MAX(numeroSolicitud) INTO vUltimaSolicitud
 	FROM Solicitud;
 	CONVERT(int,vUltimaSolicitud);
 	--Verificar que este convert funcione solamente llamandolo
@@ -33,7 +34,7 @@ IS
 	vNumero VARCHAR2(50);
 BEGIN
     vNumero := fConsultarNumLibre;
-	pkSolicitudNivel1.pInsertarSolicitud( vNumero,ivObservacion, 'Nuevo' ,ivProductoCodigo, ivCedulaCliente , 'A0'); -- Tipo de registro, quemado en las tablas
+	pkSolicitud.pInsertarSolicitud( vNumero,ivObservacion, 'Nuevo' ,ivProductoCodigo, ivCedulaCliente , 'A0'); -- Tipo de registro, quemado en las tablas
 END pRegistrarSolicitudCreacion;
 
 
@@ -43,7 +44,7 @@ IS
 	vNumero VARCHAR2(50);
 BEGIN
     vNumero := fConsultarNumLibre();
-	pkSolicitudNivel1.pInsertarSolicitud( vNumero, ivObservacion, 'Nuevo' ,ivProductoCodigo, ivCedulaCliente , 'B1'); -- Tipo de registro, quemado en las tablas
+	pkSolicitud.pInsertarSolicitud( vNumero, ivObservacion, 'Nuevo' ,ivProductoCodigo, ivCedulaCliente , 'B1'); -- Tipo de registro, quemado en las tablas
 END pRegistrarSolicitudModificacion;
 
 
@@ -53,7 +54,7 @@ IS
 	vNumero VARCHAR2(50);
 BEGIN
     vNumero := fConsultarNumLibre();	
-	pkSolicitudNivel1.pInsertarSolicitud( vNumero, ivObservacion, 'Nuevo' ,ivProductoCodigo, ivCedulaCliente , 'C2'); -- Tipo de registro, quemado en las tablas
+	pkSolicitud.pInsertarSolicitud( vNumero, ivObservacion, 'Nuevo' ,ivProductoCodigo, ivCedulaCliente , 'C2'); -- Tipo de registro, quemado en las tablas
 END pRegistrarSolicitudCancelacion;
 
 
@@ -63,7 +64,7 @@ IS
 	vNumero VARCHAR2(50);
 BEGIN
     vNumero := fConsultarNumLibre();
-	pkSolicitudNivel1.pInsertarSolicitud( vNumero, ivObservacion, 'Nuevo' ,ivProductoCodigo, ivCedulaCliente , 'D3'); -- Tipo de registro, quemado en las tablas
+	pkSolicitud.pInsertarSolicitud( vNumero, ivObservacion, 'Nuevo' ,ivProductoCodigo, ivCedulaCliente , 'D3'); -- Tipo de registro, quemado en las tablas
 END pRegistrarSolicitudReclamo;
 
 END pkRegistro;
