@@ -3,7 +3,8 @@ CREATE OR REPLACE PACKAGE pkAtention AS
 PROCEDURE pAtencion ( ivCedulaFuncionario VARCHAR2, ivNumeroSolicitud VARCHAR2);
 FUNCTION fValidarSolicitudFuncionario (ivCedulaFuncionario VARCHAR2 , ivNumeroSolicitud VARCHAR2) return BOOLEAN;
 
-END pkAtention;/
+END pkAtention;
+/
 
 
 CREATE OR REPLACE PACKAGE BODY pkAtention AS
@@ -26,14 +27,15 @@ BEGIN
         return FALSE;
     END IF;
 
-END fValidarSolicitudFuncinario;
+END fValidarSolicitudFuncionario;
+
 
 PROCEDURE pAtencion ( ivCedulaFuncionario VARCHAR2, ivNumeroSolicitud VARCHAR2)
 IS
+    vValidacion BOOLEAN;
 BEGIN
-	
-
-END 
+	vValidacion := fValidarSolicitudFuncionario(ivCedulaFuncionario,ivNumeroSolicitud);
+END pAtencion;
 
 
 
