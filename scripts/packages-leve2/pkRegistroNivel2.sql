@@ -18,9 +18,9 @@ IS
 	ovNumero VARCHAR2(50);
 	vUltimaSolicitud VARCHAR2(50);	
 BEGIN
-	SELECT MAX(numeroSolicitud) INTO vUltimaSolicitud
+	SELECT CAST(MAX(numeroSolicitud) AS int) INTO vUltimaSolicitud
 	FROM Solicitud;
-	CONVERT(int,vUltimaSolicitud);
+
 	--Verificar que este convert funcione solamente llamandolo
 	ovNumero := vUltimaSolicitud+1; 
 	return ovNumero;
