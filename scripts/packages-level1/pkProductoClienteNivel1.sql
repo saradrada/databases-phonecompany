@@ -8,8 +8,9 @@ PROCEDURE pModificarProductoCodigoProductoCliente (ivNumeroProducto VARCHAR2, iv
 PROCEDURE pModificarClienteCedulaProductoCliente (ivNumeroProducto VARCHAR2, ivCedulaCliente VARCHAR2);
 PROCEDURE pBorrarProductoCliente(ivNumeroProducto VARCHAR2);
 FUNCTION fConsultarProductoCliente (ivNumeroProducto VARCHAR2) return varchar2;
-
 END pkProductoCliente;
+/
+
 
 CREATE OR REPLACE PACKAGE BODY pkProductoCliente AS
 
@@ -97,7 +98,7 @@ BEGIN
 	EXCEPTION
 	WHEN no_data_found THEN
 	RAISE_APPLICATION_ERROR(-20000,'No se encontro ningún producto-cliente con el número de producto: '||ivNumeroProducto);
-END pBorrarSolicitud;
+END pBorrarProductoCliente;
 
 
 FUNCTION fConsultarProductoCliente(ivNumeroProducto VARCHAR2) return varchar2
@@ -133,5 +134,3 @@ END fConsultarProductoCliente;
 
 
 END pkProductoCliente;
-
-

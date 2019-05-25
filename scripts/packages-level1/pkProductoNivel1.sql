@@ -5,6 +5,8 @@ PROCEDURE pModificarDescripcionProducto (ivCodigo VARCHAR2, ivDescripcion VARCHA
 PROCEDURE pBorrarProducto(ivCodigo VARCHAR2);
 FUNCTION fConsultarProducto (ivCodigo VARCHAR2) return varchar2;
 END pkProducto;
+/
+
 
 CREATE OR REPLACE PACKAGE BODY pkProducto AS
 

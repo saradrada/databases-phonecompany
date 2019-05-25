@@ -1,10 +1,10 @@
 CREATE OR REPLACE PACKAGE pkTipo AS
 PROCEDURE pInsertarTipo (ivTipo VARCHAR2, ivDescripcion VARCHAR2);
-PROCEDURE pModificarTipo (ivTipo VARCHAR2, ivDescripcion VARCHAR2);
 PROCEDURE pModificarDescripcionTipo (ivTipo VARCHAR2, ivDescripcion VARCHAR2);
 PROCEDURE pBorrarTipo(ivTipo VARCHAR2);
 FUNCTION fConsultarTipo (ivTipo VARCHAR2) return varchar2;
 END pkTipo;
+/
 
 CREATE OR REPLACE PACKAGE BODY pkTipo AS
 

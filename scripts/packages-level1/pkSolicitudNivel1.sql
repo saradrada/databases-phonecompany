@@ -8,7 +8,8 @@ PROCEDURE pModificarProductoCodigoSolicitud(ivNumeroSolicitud VARCHAR2, ivProduc
 PROCEDURE pModificarTipoCodigoSolicitud(ivNumeroSolicitud VARCHAR2, ivTipoCodigo VARCHAR2);
 PROCEDURE borrarSolicitud(ivNumeroSolicitud VARCHAR2);
 FUNCTION fConsultarSolicitud (ivNumeroSolicitud VARCHAR2) return varchar2;
-END pkSolicitud;/
+END pkSolicitud;
+/
 
 
 
@@ -32,10 +33,10 @@ BEGIN
 	FROM Solicitud WHERE numeroSolicitud = ivNumeroSolicitud;
 	SELECT Producto_codigo INTO vProductoCodigo
 	FROM Solicitud WHERE numeroSolicitud = ivNumeroSolicitud;
-	SELECT Tipo_tipo INTO vTipoCodigo
+	SELECT Tipo_tipo INTO vTipoTipo
 	FROM Solicitud WHERE numeroSolicitud = ivNumeroSolicitud;
 
-	ovSolicitud := ivNumeroSolicitud ||','|| vObservacion ||','|| vEstado ||','|| vProductoCodigo ||','|| vTipoCodigo || ',' || vCedula ;
+	ovSolicitud := ivNumeroSolicitud ||','|| vObservacion ||','|| vEstado ||','|| vProductoCodigo ||','|| vTipoTipo || ',' || vCedula ;
 	return ovSolicitud;
 
 	EXCEPTION
@@ -78,7 +79,7 @@ BEGIN
 	UPDATE Solicitud
 	SET observacion = ivObservacion,
 		estado = ivEstado,
-		cliente_id = ivCedulaCliente,
+		cliente_cedula = ivCedulaCliente,
 		producto_codigo = ivProductoCodigo,
 		tipo_tipo = ivTipoCodigo
 	WHERE numerosolicitud = ivNumeroSolicitud;

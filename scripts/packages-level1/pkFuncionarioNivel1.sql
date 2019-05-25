@@ -1,6 +1,6 @@
 CREATE OR REPLACE PACKAGE pkFuncionario AS
-PROCEDURE pInsertarFuncionario(ivId VARCHAR2,ivContrasenha VARCHAR2,ivNombre VARCHAR2, ivCedula VARCHAR2,ivDireccion VARCHAR2, ivFecha DATE, ivTelefono VARCHAR2);
-PROCEDURE pModificarFuncionario(ivId VARCHAR2, ivContrasenha VARCHAR2,ivNombre VARCHAR2,ivCedula VARCHAR2,ivDireccion VARCHAR2, ivFecha DATE, ivTelefono VARCHAR2);
+PROCEDURE pInsertarFuncionario(ivId VARCHAR2,ivContrasena VARCHAR2,ivNombre VARCHAR2, ivCedula VARCHAR2,ivDireccion VARCHAR2, ivFecha DATE, ivTelefono VARCHAR2);
+PROCEDURE pModificarFuncionario(ivId VARCHAR2, ivContrasena VARCHAR2,ivNombre VARCHAR2,ivCedula VARCHAR2,ivDireccion VARCHAR2, ivFecha DATE, ivTelefono VARCHAR2);
 PROCEDURE pModificarId(ivCedula VARCHAR2 , ivNuevaId VARCHAR2);
 PROCEDURE pModificarNombreFuncionario (ivCedula VARCHAR2, ivNuevoNombre VARCHAR2);
 PROCEDURE pModificarContrasenaFuncionario (ivCedula VARCHAR2 , ivNuevaContrasena VARCHAR2);
@@ -10,9 +10,11 @@ PROCEDURE pModificarTelefonoFuncionario(ivCedula VARCHAR2, ivNuevoTelefono VARCH
 PROCEDURE pEliminarFuncionario(ivCedula VARCHAR2);
 FUNCTION fConsultarFuncionario(ivCedula VARCHAR2) return VARCHAR2;
 END pkFuncionario;
+/
+
+
 
 CREATE OR REPLACE PACKAGE BODY pkFuncionario AS
-
 FUNCTION fConsultarFuncionario(ivCedula VARCHAR2) return VARCHAR2
 IS
 	ovFuncionario		VARCHAR2(400);
@@ -21,13 +23,13 @@ IS
 	vCedula				VARCHAR2(30);
 	vNombre             VARCHAR2(30);
     vDireccion          VARCHAR2(50);
-    vFecha_nacimiento   DATE NOT NULL;
+    vFecha_nacimiento   DATE;
     vTelefono           VARCHAR2(30); 
 
 
 BEGIN
 
-	SELECT contrasena INTO vContraseña
+	SELECT contrase�a INTO vContrasena
 	FROM Funcionario WHERE cedula = ivCedula;
 	SELECT id INTO vId
 	FROM Funcionario WHERE cedula = ivCedula;
@@ -40,7 +42,7 @@ BEGIN
 	SELECT telefono INTO vTelefono
 	FROM Funcionario WHERE cedula = ivCedula;
 	
-	ovFuncionario := ivId || "," || vNombre || "," || vContraseña || "," || vCedula || "," || vDireccion || "," || vFecha_nacimiento || "," || vTelefono;
+	ovFuncionario := vId || '-' || vNombre || '-' || vContrasena || '-' || vCedula || '-' || vDireccion || '-' || vFecha_nacimiento || '-' || vTelefono;
 	return ovFuncionario;
 	
 	EXCEPTION
@@ -50,11 +52,11 @@ BEGIN
 END fConsultarFuncionario;
 
 
-PROCEDURE pInsertarFuncionario(ivId VARCHAR2,ivContrasenha VARCHAR2,ivNombre VARCHAR2, ivCedula VARCHAR2,ivDireccion VARCHAR2, ivFecha DATE, ivTelefono VARCHAR2)
+PROCEDURE pInsertarFuncionario(ivId VARCHAR2,ivContrasena VARCHAR2,ivNombre VARCHAR2, ivCedula VARCHAR2,ivDireccion VARCHAR2, ivFecha DATE, ivTelefono VARCHAR2)
 IS
 BEGIN
     INSERT INTO Funcionario
-    VALUES(ivId,ivNombre,ivContrasenha,ivCedula,ivDireccion,ivFecha,ivTelefono);
+    VALUES(ivId,ivNombre,ivContrasena,ivCedula,ivDireccion,ivFecha,ivTelefono);
 
 	EXCEPTION
 	WHEN DUP_VAL_ON_INDEX THEN
@@ -78,11 +80,11 @@ END pEliminarFuncionario;
 
 
 
-PROCEDURE pModificarFuncionario(ivId VARCHAR2, ivContrasenha VARCHAR2,ivNombre VARCHAR2,ivCedula VARCHAR2, ivDireccion VARCHAR2, ivFecha DATE, ivTelefono VARCHAR2)
+PROCEDURE pModificarFuncionario(ivId VARCHAR2, ivContrasena VARCHAR2,ivNombre VARCHAR2,ivCedula VARCHAR2, ivDireccion VARCHAR2, ivFecha DATE, ivTelefono VARCHAR2)
 IS
 BEGIN
     UPDATE Funcionario
-    SET contraseña = ivContrasenha,
+    SET contrase�a = ivContrasena,
 		nombre = ivNombre,
 		direccion = ivDireccion,
 		fecha_nacimiento = ivFecha,
@@ -102,7 +104,7 @@ PROCEDURE pModificarId(ivCedula VARCHAR2 , ivNuevaId VARCHAR2)
 IS
 BEGIN
 	UPDATE Funcionario
-    SET id = ivNuevoId
+    SET id = ivNuevaId
     WHERE cedula = ivCedula;
 	
 	EXCEPTION
@@ -126,17 +128,17 @@ END pModificarNombreFuncionario;
 
 
 
-PROCEDURE pModificarContraseñaFuncionario (ivCedula VARCHAR2 , ivNuevaContraseña VARCHAR2)
+PROCEDURE pModificarContrasenaFuncionario (ivCedula VARCHAR2 , ivNuevaContrasena VARCHAR2)
 IS
 BEGIN
     UPDATE Funcionario
-    SET contraseña = ivNuevaContraseña
+    SET contrase�a = ivNuevaContrasena
     WHERE cedula = ivCedula;
 	
 	EXCEPTION
 	WHEN no_data_found THEN
 	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun Funcionario con la misma cedula: '||ivCedula);
-END pModificarContraseñaCliente;
+END pModificarContrasenaFuncionario;
 
 
 
@@ -144,7 +146,7 @@ PROCEDURE pModificarDireccionFuncionario (ivCedula VARCHAR2, ivNuevaDireccion VA
 IS
 BEGIN
     UPDATE Funcionario
-    SET direccion = ivDireccion
+    SET direccion = ivNuevaDireccion
     WHERE cedula = ivCedula;
 	
 	EXCEPTION
@@ -164,7 +166,7 @@ BEGIN
 	EXCEPTION
 	WHEN no_data_found THEN
 	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun Funcionario con la misma cedula: '||ivCedula);
-END pModificarFechaNacimientoCliente;
+END pModificarFechaNacimientoFuncionario;
 
 
 

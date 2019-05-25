@@ -10,6 +10,7 @@ PROCEDURE pModificarTelefonoCliente (ivCedula VARCHAR2, ivNuevoTelefono VARCHAR2
 PROCEDURE pEliminarCliente (ivCedula VARCHAR2);
 FUNCTION fConsultarCliente(ivCedula VARCHAR2) return VARCHAR2;
 END pkCliente;
+/
 
 CREATE OR REPLACE PACKAGE BODY pkCliente AS
 
@@ -17,19 +18,14 @@ FUNCTION fConsultarCliente(ivCedula VARCHAR2) return VARCHAR2
 IS
 	ovCliente			VARCHAR2(400);
 	vId                 VARCHAR2(30);
-    vContraseña         VARCHAR2(30);
+    vContrasena         VARCHAR2(30);
 	vCedula				VARCHAR2(30);
 	vNombre             VARCHAR2(30);
     vDireccion          VARCHAR2(50);
-    vFecha_nacimiento   DATE NOT NULL;
+    vFecha_nacimiento   DATE;
     vTelefono           VARCHAR2(30); 
-
-
 BEGIN
-
 	SELECT contrase�a INTO vContrasena
-	FROM Cliente WHERE cedula = ivCedula;
-	SELECT id INTO vId
 	FROM Cliente WHERE cedula = ivCedula;
 	SELECT nombre INTO vNombre
 	FROM Cliente WHERE cedula = ivCedula;
@@ -40,7 +36,7 @@ BEGIN
 	SELECT telefono INTO vTelefono
 	FROM Cliente WHERE cedula = ivCedula;
 	
-	ovCliente := ivId || "," || vNombre || "," || vContraseña || "," || vCedula || "," || vDireccion || "," || vFecha_nacimiento || "," || vTelefono;
+	ovCliente := vNombre || '-' || vContrasena || '-' || vCedula || '-' || vDireccion || '-' || vFecha_nacimiento || '-' || vTelefono;
 	return ovCliente;
 	
 	EXCEPTION
@@ -55,8 +51,6 @@ IS
 BEGIN
     INSERT INTO Cliente 
     VALUES(ivId,ivNombre,ivContrasenha,ivCedula,ivDireccion,ivFecha,ivTelefono);
-
-	
 	EXCEPTION
 	WHEN DUP_VAL_ON_INDEX THEN
 	RAISE_APPLICATION_ERROR(-20000,'Ya existe un cliente con la misma cedula: ' || ivCedula);
@@ -70,8 +64,8 @@ BEGIN
 	DELETE 
 	FROM Cliente
 	WHERE cedula = ivCedula;
-	
-	
+    
+    
 	EXCEPTION
 	WHEN no_data_found THEN
 	RAISE_APPLICATION_ERROR(-20000,'No existe ningun cliente con la misma cedula:'||ivCedula);
@@ -83,7 +77,7 @@ PROCEDURE pModificarCliente(ivId VARCHAR2, ivContrasenha VARCHAR2,ivNombre VARCH
 IS
 BEGIN
     UPDATE Cliente
-    SET contraseña = ivContrasenha,
+    SET contrase�a = ivContrasenha,
 		nombre = ivNombre,
 		direccion = ivDireccion,
 		fecha_nacimiento = ivFecha,
@@ -103,7 +97,7 @@ PROCEDURE pModificarId(ivCedula VARCHAR2 , ivNuevaId VARCHAR2)
 IS
 BEGIN
 	UPDATE Cliente
-    SET id = ivNuevoId
+    SET id = ivNuevaId
     WHERE cedula = ivCedula;
 	
 	EXCEPTION
@@ -129,17 +123,17 @@ END pModificarNombreCliente;
 
 
 
-PROCEDURE pModificarContraseñaCliente (ivCedula VARCHAR2 , ivNuevaContraseña VARCHAR2)
+PROCEDURE pModificarContrasenaCliente (ivCedula VARCHAR2 , ivNuevaContrasena VARCHAR2)
 IS
 BEGIN
     UPDATE Cliente
-    SET contraseña = ivNuevaContraseña
+    SET contrase�a = ivNuevaContrasena
     WHERE cedula = ivCedula;
 	
 	EXCEPTION
 	WHEN no_data_found THEN
 	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun cliente con la misma cedula: '||ivCedula);
-END pModificarContraseñaCliente;
+END pModificarContrasenaCliente;
 
 
 
@@ -147,7 +141,7 @@ PROCEDURE pModificarDireccionCliente (ivCedula VARCHAR2, ivNuevaDireccion VARCHA
 IS
 BEGIN
     UPDATE Cliente
-    SET direccion = ivDireccion
+    SET direccion = ivNuevaDireccion
     WHERE cedula = ivCedula;
 	
 	EXCEPTION
