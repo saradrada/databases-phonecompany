@@ -1,15 +1,15 @@
 CREATE OR REPLACE PACKAGE pkCliente AS
-PROCEDURE pInsertarCliente(ivId VARCHAR2,ivContrasenha VARCHAR2,ivNombre VARCHAR2, ivCedula VARCHAR2,ivDireccion VARCHAR2, ivFecha DATE, ivTelefono VARCHAR2)
-PROCEDURE pModificarCliente(ivId VARCHAR2, ivContrasenha VARCHAR2,ivNombre VARCHAR2,ivCedula VARCHAR2,ivDireccion VARCHAR2, ivFecha DATE, ivTelefono VARCHAR2)
-PROCEDURE pModificarNombreCliente (ivCedula VARCHAR2, ivNuevoNombre VARCHAR2)
-PROCEDURE pModificarId(ivCedula VARCHAR2 , ivNuevaId VARCHAR2)
-PROCEDURE pModificarContraseñaCliente (ivCedula VARCHAR2 , ivNuevaContraseña VARCHAR2)
-PROCEDURE pModificarDireccionCliente (ivCedula VARCHAR2, ivNuevaDireccion VARCHAR2)
-PROCEDURE pModificarFechaNacimientoCliente (ivCedula VARCHAR2 , ivNuevaFecha DATE)
-PROCEDURE pModificarTelefonoCliente (ivCedula VARCHAR2, ivNuevoTelefono VARCHAR2)
-PROCEDURE pEliminarCliente (ivCedula VARCHAR2)
-FUNCTION fConsultarCliente(ivCedula VARCHAR2) return VARCHAR2
-
+PROCEDURE pInsertarCliente(ivId VARCHAR2,ivContrasenha VARCHAR2,ivNombre VARCHAR2, ivCedula VARCHAR2,ivDireccion VARCHAR2, ivFecha DATE, ivTelefono VARCHAR2);
+PROCEDURE pModificarCliente(ivId VARCHAR2, ivContrasenha VARCHAR2,ivNombre VARCHAR2,ivCedula VARCHAR2,ivDireccion VARCHAR2, ivFecha DATE, ivTelefono VARCHAR2);
+PROCEDURE pModificarNombreCliente (ivCedula VARCHAR2, ivNuevoNombre VARCHAR2);
+PROCEDURE pModificarId(ivCedula VARCHAR2 , ivNuevaId VARCHAR2);
+PROCEDURE pModificarContrasenaCliente (ivCedula VARCHAR2 , ivNuevaContrasena VARCHAR2);
+PROCEDURE pModificarDireccionCliente (ivCedula VARCHAR2, ivNuevaDireccion VARCHAR2);
+PROCEDURE pModificarFechaNacimientoCliente (ivCedula VARCHAR2 , ivNuevaFecha DATE);
+PROCEDURE pModificarTelefonoCliente (ivCedula VARCHAR2, ivNuevoTelefono VARCHAR2);
+PROCEDURE pEliminarCliente (ivCedula VARCHAR2);
+FUNCTION fConsultarCliente(ivCedula VARCHAR2) return VARCHAR2;
+END pkCliente;
 
 CREATE OR REPLACE PACKAGE BODY pkCliente AS
 
@@ -21,21 +21,21 @@ IS
 	vCedula				VARCHAR2(30);
 	vNombre             VARCHAR2(30);
     vDireccion          VARCHAR2(50);
-    vFecha_nacimiento   DATE NOT NULL,
+    vFecha_nacimiento   DATE NOT NULL;
     vTelefono           VARCHAR2(30); 
 
 
 BEGIN
 
-	SELECT contraseña INTO vContraseña
+	SELECT contrase�a INTO vContrasena
 	FROM Cliente WHERE cedula = ivCedula;
-	SELECT id INTO vId;
+	SELECT id INTO vId
 	FROM Cliente WHERE cedula = ivCedula;
 	SELECT nombre INTO vNombre
 	FROM Cliente WHERE cedula = ivCedula;
 	SELECT direccion INTO vDireccion
 	FROM Cliente WHERE cedula = ivCedula;
-	SELECT fecha_nacimiento INTO vFecha_nacimiento;
+	SELECT fecha_nacimiento INTO vFecha_nacimiento
 	FROM Cliente WHERE cedula = ivCedula;
 	SELECT telefono INTO vTelefono
 	FROM Cliente WHERE cedula = ivCedula;
@@ -109,7 +109,7 @@ BEGIN
 	EXCEPTION
 	WHEN no_data_found THEN
 	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun cliente con la misma cedula: '||ivCedula);
-END
+END pModificarId;
 
 
 
