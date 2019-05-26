@@ -62,6 +62,7 @@ public class ControllerPerson {
 			alert.setHeaderText("Error en el Id.");
 			alert.setContentText("El Id no puede estar vacío.");
 			alert.showAndWait();
+			
 		} else if (txtNombre.getText() == null || txtNombre.getText().equals("")) {
 			flag = false;
 			alert.setHeaderText("Error en el nombre.");
@@ -72,11 +73,13 @@ public class ControllerPerson {
 			alert.setHeaderText("Error en la contraseña.");
 			alert.setContentText("La contraseña no puede estar vacía.");
 			alert.showAndWait();
+			
 		} else if (txtCedula.getText() == null || txtCedula.getText().equals("")) {
 			flag = false;
 			alert.setHeaderText("Error en la cédula.");
 			alert.setContentText("La cédula no puede estar vacía.");
 			alert.showAndWait();
+			
 		} else if (txtCedula.getText() != null) {
 			try {
 				int cedula = Integer.parseInt(txtCedula.getText());
@@ -86,16 +89,19 @@ public class ControllerPerson {
 				alert.setContentText("La cédula sólo debe contener caracters numéricos.");
 				alert.showAndWait();
 			}
+
 		} else if (txtDireccion.getText() == null || txtDireccion.getText().equals("")) {
 			flag = false;
 			alert.setHeaderText("Error en la dirección.");
 			alert.setContentText("La dirección no puede estar vacía.");
 			alert.showAndWait();
+			
 		} else if (txtTelefono.getText() == null || txtTelefono.getText().equals("")) {
 			flag = false;
 			alert.setHeaderText("Error en el teléfono.");
 			alert.setContentText("El teléfono no puede estar vacío.");
 			alert.showAndWait();
+			
 		} else if (txtTelefono.getText() != null) {
 			try {
 				int telefono = Integer.parseInt(txtTelefono.getText());
@@ -105,11 +111,13 @@ public class ControllerPerson {
 				alert.setContentText("El teléfono sólo debe contener caracters numéricos.");
 				alert.showAndWait();
 			}
+			
 		} else if (date == null) {
 			flag = false;
 			alert.setHeaderText("Error en la fecha.");
 			alert.setContentText("La fecha no puede estar vacía. Por favor seleccione una.");
 			alert.showAndWait();
+			
 		} else if (tipo == null || tipo.equals("")) {
 			flag = false;
 			alert.setHeaderText("Error en el tipo.");

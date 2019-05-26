@@ -10,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class Controller {
+public class ControllerMenu {
 
 	@FXML
 	private GridPane gridBaseDatos;
@@ -20,20 +20,20 @@ public class Controller {
 
 	@FXML
 	private GridPane gridSolicitud;
-	
-	@FXML
-	void agregarPersona(ActionEvent event) {
-		Parent root;
-		try {
-			root = FXMLLoader.load(getClass().getResource("form-person.fxml"));
-			Stage stage = new Stage();
-			stage.setScene(new Scene(root));
-			stage.show();
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+//	@FXML
+//	void agregarPersona(ActionEvent event) {
+//		Parent root;
+//		try {
+//			root = FXMLLoader.load(getClass().getResource("form-person.fxml"));
+//			Stage stage = new Stage();
+//			stage.setScene(new Scene(root));
+//			stage.show();
+//
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 	@FXML
 	void asignarSolicitud(ActionEvent event) {
@@ -56,7 +56,17 @@ public class Controller {
 	}
 
 	@FXML
+	void consultarUsuario(ActionEvent event) {
+
+	}
+
+	@FXML
 	void eliminarBD(ActionEvent event) {
+
+	}
+
+	@FXML
+	void eliminarUsuario(ActionEvent event) {
 
 	}
 
@@ -70,6 +80,11 @@ public class Controller {
 	void gestionarSolicitud(ActionEvent event) {
 		setVisibleGrid(gridMenu, false);
 		setVisibleGrid(gridSolicitud, true);
+	}
+
+	@FXML
+	void gestionarUsuario(ActionEvent event) {
+
 	}
 
 	@FXML
@@ -90,7 +105,17 @@ public class Controller {
 	}
 
 	@FXML
+	void modificarUsuario(ActionEvent event) {
+
+	}
+
+	@FXML
 	void registrarSolicitud(ActionEvent event) {
+
+	}
+
+	@FXML
+	void registrarUsuario(ActionEvent event) {
 
 	}
 

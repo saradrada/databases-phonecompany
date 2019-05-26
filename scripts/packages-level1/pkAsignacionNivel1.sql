@@ -56,7 +56,7 @@ BEGIN
     
 
 	ovAsignacion := vFecha ||','|| ivSolicitudNumero ||','|| ivFuncionarioCedula;
-	return ovProducto;
+	return ovAsignacion;
 
 	EXCEPTION
 	WHEN no_data_found THEN
