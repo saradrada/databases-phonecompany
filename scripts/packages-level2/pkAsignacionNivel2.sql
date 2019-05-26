@@ -62,8 +62,11 @@ CREATE OR REPLACE TRIGGER trg_asignacionAutomatica
     AFTER 
     INSERT ON SOLICITUD
     declare
-    numero number;
+    vNumeroSolicitud VARCHAR2(10);
         BEGIN
-            select SEC_SOLICITUD.currval into numero from dual;
+          SELECT Solicitud.numeroSolicitud INTO vNumeroSolicitud
+   FROM dual;
         pkAsignacionNivel2.pAsignarSolicitud(numero);
     END trg_asignacionAutomatica;
+   
+
