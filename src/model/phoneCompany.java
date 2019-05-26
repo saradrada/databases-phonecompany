@@ -1,5 +1,6 @@
 package model;
 
+import java.security.Principal;
 import java.sql.Connection;
 
 public class phoneCompany {
@@ -14,12 +15,8 @@ public class phoneCompany {
 		this.user = user;
 	}
 	
-	public void AddClient(String ivId,String ivContrasenha,String ivNombre ,String ivCedula ,String ivDireccion,String  ivFecha, String ivTelefono) {
-		try {
+	public void AddClient(String ivId,String ivContrasenha,String ivNombre ,String ivCedula ,String ivDireccion,String  ivFecha, String ivTelefono) throws Exception {
 			Client.AddClient(this.connection, ivId, ivContrasenha, ivNombre, ivCedula, ivDireccion, ivFecha, ivTelefono);
-		} catch (Exception e) {
-			System.out.println(e);
-		}
 	}
 	
 	public String getUser() {
@@ -46,9 +43,9 @@ public class phoneCompany {
 		
 		try {
 			pc.creteConecction("P09551_1_4", "P09551_1_4_20191");
-			pc.AddClient("567890", "456789", "Klan", "4567890", "aqui", "26-05-2019", "456789");
+//			pc.AddClient("567890", "456789", "Klan", "4567890", "aqui", "26-05-2019", "456789");
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e);
 		}
 	}
 	

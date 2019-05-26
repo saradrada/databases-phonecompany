@@ -22,7 +22,7 @@ BEGIN
 
 	EXCEPTION
 	WHEN DUP_VAL_ON_INDEX THEN
-	RAISE_APPLICATION_ERROR(-20000,'Ya hay una producto-cliente con el número de producto: ' || ivNumeroProducto);
+	RAISE_APPLICATION_ERROR(-20000,'Ya hay una producto-cliente con el número de producto ' || ivNumeroProducto);
 END pInsertarProductoCliente;
 
 
@@ -37,7 +37,7 @@ BEGIN
 	WHERE numeroProducto = ivNumeroProducto;
 	EXCEPTION
 	WHEN no_data_found THEN
-	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningún producto-cliente con el número de producto: '||ivNumeroProducto);
+	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningún producto-cliente con el número de producto '||ivNumeroProducto);
 END pModificarProductoCliente;
 
 
@@ -49,7 +49,7 @@ BEGIN
 	WHERE numeroProducto = ivNumeroProducto;
 	EXCEPTION
 	WHEN no_data_found THEN
-	RAISE_APPLICATION_ERROR(-20000,'No se encontro ningún producto-cliente con el número de producto: '||ivNumeroProducto);
+	RAISE_APPLICATION_ERROR(-20000,'No se encontro ningún producto-cliente con el número de producto '||ivNumeroProducto);
 END pModificarFechaCitacionProductoCliente;
 
 
@@ -61,7 +61,7 @@ BEGIN
 	WHERE numeroProducto = ivNumeroProducto;
 	EXCEPTION
 	WHEN no_data_found THEN
-	RAISE_APPLICATION_ERROR(-20000,'No se encontro ningún producto-cliente con el número de producto: '||ivNumeroProducto);
+	RAISE_APPLICATION_ERROR(-20000,'No se encontro ningún producto-cliente con el número de producto '||ivNumeroProducto);
 END pModificarFechaRetiroProductoCliente;
 
 
@@ -73,7 +73,7 @@ BEGIN
 	WHERE numeroProducto = ivNumeroProducto;
 	EXCEPTION
 	WHEN no_data_found THEN
-	RAISE_APPLICATION_ERROR(-20000,'No se encontro ningún producto-cliente con el número de producto: '||ivNumeroProducto);
+	RAISE_APPLICATION_ERROR(-20000,'No se encontro ningún producto-cliente con el número de producto '||ivNumeroProducto);
 END pModificarProductoCodigoProductoCliente;
 
 
@@ -86,7 +86,7 @@ BEGIN
 	WHERE numeroProducto = ivNumeroProducto;
 	EXCEPTION
 	WHEN no_data_found THEN
-	RAISE_APPLICATION_ERROR(-20000,'No se encontro ningún producto-cliente con el número de producto: '||ivNumeroProducto);
+	RAISE_APPLICATION_ERROR(-20000,'No se encontro ningún producto-cliente con el número de producto '||ivNumeroProducto);
 END pModificarClienteCedulaProductoCliente;
 
 PROCEDURE pBorrarProductoCliente(ivNumeroProducto VARCHAR2)
@@ -97,7 +97,7 @@ BEGIN
 	WHERE ProductoCliente.numeroProducto = ivNumeroProducto;
 	EXCEPTION
 	WHEN no_data_found THEN
-	RAISE_APPLICATION_ERROR(-20000,'No se encontro ningún producto-cliente con el número de producto: '||ivNumeroProducto);
+	RAISE_APPLICATION_ERROR(-20000,'No se encontro ningún producto-cliente con el número de producto '||ivNumeroProducto);
 END pBorrarProductoCliente;
 
 
@@ -128,7 +128,7 @@ BEGIN
 
 	EXCEPTION
 	WHEN no_data_found THEN
-	RAISE_APPLICATION_ERROR(-20000,'No existe ninguna solicitud con el codigo: '||ivNumeroProducto);
+	RAISE_APPLICATION_ERROR(-20000,'No existe ninguna solicitud con el codigo '||ivNumeroProducto);
 	
 END fConsultarProductoCliente;
 

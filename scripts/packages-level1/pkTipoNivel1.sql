@@ -16,7 +16,7 @@ BEGIN
 
 	EXCEPTION
 	WHEN DUP_VAL_ON_INDEX THEN
-	RAISE_APPLICATION_ERROR(-20000,'Ya existe el tipo: ' || ivTipo);
+	RAISE_APPLICATION_ERROR(-20000,'Ya existe el tipo ' || ivTipo);
 END pInsertarTipo;
 
 
@@ -28,7 +28,7 @@ BEGIN
 	WHERE tipo = ivTipo;
 	EXCEPTION
 	WHEN no_data_found THEN
-	   RAISE_APPLICATION_ERROR(-20000,'No se encontro el tipo : '||ivTipo);
+	   RAISE_APPLICATION_ERROR(-20000,'No se encontro el tipo '||ivTipo);
 END pModificarSolicitud;
 
 
@@ -40,7 +40,7 @@ BEGIN
 	WHERE tipo = ivTipo;
 	EXCEPTION
 	WHEN no_data_found THEN
-	   RAISE_APPLICATION_ERROR(-20000,'No se encontro el tipo : '||ivTipo);
+	   RAISE_APPLICATION_ERROR(-20000,'No se encontro el tipo '||ivTipo);
 END pModificarDescripcionTipo;
 
 
@@ -52,7 +52,7 @@ BEGIN
 	WHERE Tipo.tipo = ivTipo;
 	EXCEPTION
 	WHEN no_data_found THEN
-	RAISE_APPLICATION_ERROR(-20000,'No se encontro el tipo : '||ivTipo);
+	RAISE_APPLICATION_ERROR(-20000,'No se encontro el tipo '||ivTipo);
 END pBorrarTipo;
 
 
@@ -73,7 +73,7 @@ BEGIN
 
 	EXCEPTION
 	WHEN no_data_found THEN
-	RAISE_APPLICATION_ERROR(-20000,'No existe el tipo: '||ivTipo);
+	RAISE_APPLICATION_ERROR(-20000,'No existe el tipo '||ivTipo);
 	
 END fConsultarTipo;
 
