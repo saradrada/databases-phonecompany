@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.PhoneCompany;
 
 /**
  * @author Sara Ortiz Drada
@@ -15,8 +16,18 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
 
+	public static PhoneCompany pc;
+
 	public static void main(String[] args) {
+		pc = new PhoneCompany();
+		try {
+			pc.createConection("P09551_1_1", "P09551_1_1_20191");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		launch(args);
+
 	}
 
 	@Override

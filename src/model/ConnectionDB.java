@@ -27,7 +27,7 @@ public class ConnectionDB {
 			ResultSet rs = stmt.executeQuery(text);
 			rs.next();
 			return rs.getString(1);
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			throw new Exception(e.getMessage());
 		}
 	}

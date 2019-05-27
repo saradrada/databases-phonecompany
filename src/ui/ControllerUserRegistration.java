@@ -1,6 +1,7 @@
 package ui;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import javafx.event.ActionEvent;
@@ -52,8 +53,9 @@ public class ControllerUserRegistration {
 		alert.setTitle("Error");
 		boolean flag = true;
 
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-mm-yy");
-		LocalDate date = dpFechaNacimiento.getValue();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YY");
+		LocalDateTime date = dpFechaNacimiento.getValue().atStartOfDay();
+		System.out.println(date.format(formatter));
 
 		String tipo = cbTipo.getSelectionModel().getSelectedItem();
 		if (txtId.getText() == null || txtId.getText().equals("")) {
@@ -134,7 +136,25 @@ public class ControllerUserRegistration {
 			String cedula = txtCedula.getText();
 			String direccion = txtDireccion.getText();
 			String telefono = txtTelefono.getText();
+			String fecha = date + "";
 
+
+			if(tipo.equalsIgnoreCase("cliente")) {
+				try {
+					Main.pc.AddClient(id, contrasena, nombre, cedula, direccion, fecha, telefono);				
+				}catch(Exception e) {
+					alert.setHeaderText("Error al agregar cliente.");
+					alert.setContentText("El cliente con la cédula : " +  cedula + " no fue agregado.");
+					alert.showAndWait();
+					e.printStackTrace();
+				}
+			}else {				
+				alert = new Alert(AlertType.CONFIRMATION);
+				alert.setTitle("Confirmación");
+				alert.setHeaderText("Proceso agregar cliente.");
+				alert.setContentText("El cliente con la cédula : " +  cedula + " fue agregado exitosamente.");
+				alert.showAndWait();
+			}
 			System.out.println(tipo + " " + id + " " + nombre + " " + contrasena + " " + cedula + " " + direccion + " "
 					+ date + " " + telefono);
 

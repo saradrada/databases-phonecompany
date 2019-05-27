@@ -93,6 +93,7 @@ public class ControllerUserECM {
 	@FXML
 	void consultarUsuario(ActionEvent event) {
 
+		String[] datosUsuario;
 		String cedula = txtCedula.getText();
 		boolean flag = true;
 
@@ -106,8 +107,31 @@ public class ControllerUserECM {
 		}
 
 		if (flag) {
-			// Cambiar condición por el método que verifica si existe.
-			boolean condicion = true;
+
+			try {
+				String cliente = Main.pc.consultClient(cedula);
+				String funcionario = Main.pc.consultFuncionario(cedula);
+
+				if (cliente != null) {
+
+					System.out.println(cliente);
+					datosUsuario = cliente.split(",");
+				} else {
+					System.out.println(funcionario);
+					datosUsuario = cliente.split(","); 
+
+				}
+
+			} catch (Exception e) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error");
+				flag = false;
+				alert.setHeaderText("Consulta de usuarios.");
+				alert.setContentText("El usuario con la cédula: " + cedula + " no se encuentra.");
+				alert.showAndWait();
+			}
+
+			boolean condicion = false;
 
 			if (condicion) {
 				setDisable(false);

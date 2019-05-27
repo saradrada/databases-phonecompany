@@ -4,14 +4,14 @@ import java.sql.Connection;
 
 public class PhoneCompany {
 
-	private String user;
-	private String password;
-	private Connection connection;
+	private  String user;
+	private  String password;
+	private  Connection connection;
 
-	private void createConecction(String user, String password) throws Exception {
-		this.connection = ConnectionDB.createConnection(user, password);
-		this.password = password;
-		this.user = user;
+	public void createConection(String viUser, String viPassword) throws Exception {
+		connection = ConnectionDB.createConnection(viUser, viPassword);
+		password = viPassword;
+		user = viUser;
 	}
 
 	// *******************************************************************************************************
@@ -33,7 +33,7 @@ public class PhoneCompany {
 		Client.editClient(this.connection, ivId, ivContrasenha, ivNombre, ivCedula, ivDireccion, ivFecha, ivTelefono);
 	}
 
-	private String consultClient(String ivCedula) throws Exception {
+	public String consultClient(String ivCedula) throws Exception {
 		return Client.consultClient(this.connection, ivCedula);
 	}
 
@@ -58,13 +58,13 @@ public class PhoneCompany {
 				ivTelefono);
 	}
 
-	private String consultFuncionario(String ivCedula) throws Exception {
+	public String consultFuncionario(String ivCedula) throws Exception {
 		return Funcionario.consultFuncionario(this.connection, ivCedula);
 	}
 
 	// *******************************************************************************************************
 	// ********************************************* SOLICITUD
-	// ***********************************************
+	// *******************************************************************************************************
 	// *******************************************************************************************************
 
 	public void deletedSolicitud(String ivNumeroSolicitud) throws Exception {
@@ -114,8 +114,8 @@ public class PhoneCompany {
 	}
 
 	// *******************************************************************************************************
-	// **************************************** GETERS AND SETERS
-	// ********************************************
+	// **************************************** GETERS AND SETERS*********************************************
+	// *******************************************************************************************************
 	// *******************************************************************************************************
 
 	public String getUser() {
@@ -142,7 +142,7 @@ public class PhoneCompany {
 		PhoneCompany pc = new PhoneCompany();
 
 		try {
-			pc.createConecction("P09551_1_1", "P09551_1_1_20191");
+			pc.createConection("P09551_1_4", "P09551_1_4_20191");
 			System.out.println(pc.consultClient("1638052477599"));
 			System.out.println(Solicitud.ConsultarSolicitud_Tipo(pc.getConnection(), "Modificacion"));
 		} catch (Exception e) {
