@@ -19,19 +19,18 @@ public class Main extends Application {
 	public static PhoneCompany pc;
 
 	public static void main(String[] args) {
-		pc = new PhoneCompany();
-		try {
-			pc.createConection("P09551_1_1", "P09551_1_1_20191");
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		launch(args);
 
 	}
-
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		pc = new PhoneCompany();
+		try {
+			pc.createConection("P09551_1_4", "P09551_1_4_20191");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
@@ -40,5 +39,16 @@ public class Main extends Application {
 		primaryStage.setResizable(false);
 		primaryStage.show();
 	}
+	
+	public PhoneCompany getPc() {
+		return pc;
+	}
+
+
+
+	public  void setPc(PhoneCompany pc) {
+		this.pc = pc;
+	}
+
 
 }

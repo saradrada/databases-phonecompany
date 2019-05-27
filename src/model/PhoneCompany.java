@@ -144,7 +144,7 @@ public class PhoneCompany {
 		try {
 			pc.createConection("P09551_1_4", "P09551_1_4_20191");
 			System.out.println(pc.consultClient("1638052477599"));
-			System.out.println(Solicitud.ConsultarSolicitud_Tipo(pc.getConnection(), "Modificacion"));
+//			System.out.println(Solicitud.ConsultarSolicitud_Tipo(pc.getConnection(), "Modificacion"));
 		} catch (Exception e) {
 			System.out.println(e);
 		}

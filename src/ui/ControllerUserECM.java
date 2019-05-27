@@ -109,6 +109,13 @@ public class ControllerUserECM {
 		if (flag) {
 
 			try {
+				
+				if(Main.pc != null) {
+					System.out.println("distinto de nuuuuuuull");
+				}
+				System.out.println("cedula: " + cedula );
+				System.out.println("YESS " + Main.pc.consultClient ("1638052477599"));
+				
 				String cliente = Main.pc.consultClient(cedula);
 				String funcionario = Main.pc.consultFuncionario(cedula);
 
@@ -121,6 +128,8 @@ public class ControllerUserECM {
 					datosUsuario = cliente.split(","); 
 
 				}
+				
+				System.out.println("dato en pos 0: "+datosUsuario[0]);
 
 			} catch (Exception e) {
 				Alert alert = new Alert(AlertType.ERROR);
