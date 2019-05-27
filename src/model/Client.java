@@ -20,13 +20,13 @@ public class Client {
 	public static void deletesCLient(Connection connection,String ivCedula) throws Exception {
 		try {
 			String Statament = "BEGIN "; 
-			Statament += "pkRegistro.pRegistrarCliente(";
-			Statament += "'" +ivCedula + "'');";
+			Statament += "pkEliminar.pEliminarCliente(";
+			Statament += "'" +ivCedula + "');";
 			Statament += " END;";
 			ConnectionDB.send(connection, Statament);
-			System.out.println("Se agrego un registro");
+			System.out.println("Se elimino el registro");
 		} catch (Exception e) {
-			throw new Exception(e.getMessage().split("\n")[0].split(":")[2]);
+			throw new Exception(e.getMessage().split("\n")[0].split(":")[1]);
 		}
 	}
 }
