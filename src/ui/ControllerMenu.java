@@ -24,6 +24,9 @@ public class ControllerMenu {
 	@FXML
 	private GridPane gridUsuarios;
 
+	// 0: eliminar usuario, 1: consultar usuario, 2: modificar usuario.
+	public static int ecm;
+
 	@FXML
 	void asignarSolicitud(ActionEvent event) {
 
@@ -46,17 +49,19 @@ public class ControllerMenu {
 
 	@FXML
 	void consultarUsuario(ActionEvent event) {
+		ecm = 1;
+		openNewWindow("user-ecm.fxml");
 
 	}
 
 	@FXML
 	void eliminarBD(ActionEvent event) {
-
 	}
 
 	@FXML
 	void eliminarUsuario(ActionEvent event) {
-		openNewWindow("user-delete.fxml");
+		ecm = 0;
+		openNewWindow("user-ecm.fxml");
 	}
 
 	@FXML
@@ -73,6 +78,7 @@ public class ControllerMenu {
 
 	@FXML
 	void gestionarUsuario(ActionEvent event) {
+		ecm = -1;
 		setVisibleGrid(gridMenu, false);
 		setVisibleGrid(gridUsuarios, true);
 	}
@@ -97,7 +103,8 @@ public class ControllerMenu {
 
 	@FXML
 	void modificarUsuario(ActionEvent event) {
-
+		ecm = 2;
+		openNewWindow("user-ecm.fxml");
 	}
 
 	@FXML
@@ -106,7 +113,7 @@ public class ControllerMenu {
 	}
 
 	@FXML
-	void registrarUsuario(ActionEvent event) {		
+	void registrarUsuario(ActionEvent event) {
 		openNewWindow("user-register.fxml");
 	}
 
@@ -127,7 +134,7 @@ public class ControllerMenu {
 			grid.toBack();
 		}
 	}
-	
+
 	private void openNewWindow(String fxmlPath) {
 		Parent root;
 		try {

@@ -23,6 +23,10 @@ public class phoneCompany {
 		Client.deletesCLient(this.connection,ivCedula);
 	}
 	
+
+	public void EditClient(String ivId,String ivContrasenha,String ivNombre ,String ivCedula ,String ivDireccion,String  ivFecha, String ivTelefono) throws Exception {
+			Client.editClient(this.connection, ivId, ivContrasenha, ivNombre, ivCedula, ivDireccion, ivFecha, ivTelefono);
+	}
 	public String getUser() {
 		return user;
 	}
@@ -47,8 +51,10 @@ public class phoneCompany {
 		
 		try {
 			pc.creteConecction("P09551_1_4", "P09551_1_4_20191");
+			pc.EditClient("567890", "456789", "Klan", "4567890", "tierra", "26-05-2019", "456789");
 			pc.AddClient("567890", "456789", "Klan", "4567890", "aqui", "26-05-2019", "456789");
 //			pc.DeletedClient("4567890");
+
 		} catch (Exception e) {
 			System.out.println(e);
 		}
