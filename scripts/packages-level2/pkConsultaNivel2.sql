@@ -34,6 +34,7 @@ IS
 BEGIN
     SELECT pkFuncionario.fConsultarFuncionario(ivCedula) INTO ovFuncionario
     FROM dual; 
+    return ovFuncionario;
 END fConsultarFuncionario;
 
 
