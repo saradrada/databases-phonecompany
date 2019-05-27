@@ -117,6 +117,24 @@ public class PhoneCompany {
 	// *******************************************************************************************************
 
 	/**
+	 * Asigna la solicitud con el numero de solicitud del parametro
+	 * 
+	 * @throws Exception Error enviado desde la base de datos
+	 */
+	public void asignarSolicitud(String ivNumeroSolicitud) throws Exception {
+		Solicitud.asignarSolicitud(this.connection, ivNumeroSolicitud);
+	}
+	
+	/**
+	 * Atiende la solicitud con el numero de solicitud del parametro
+	 * 
+	 * @throws Exception Error enviado desde la base de datos
+	 */
+	public void atenderSolicitud(String ivNumeroSolicitud) throws Exception {
+		Solicitud.atenderSolicitud(this.connection, ivNumeroSolicitud);
+	}
+	
+	/**
 	 * Elimina la solicitud con el numero de solicitud del parametro
 	 * 
 	 * @throws Exception Error enviado desde la base de datos
@@ -217,8 +235,7 @@ public class PhoneCompany {
 	}
 
 	// *******************************************************************************************************
-	// **************************************** GETERS AND SETERS
-	// ********************************************
+	// **************************************** GETERS AND SETERS ********************************************
 	// *******************************************************************************************************
 
 	public String getUser() {

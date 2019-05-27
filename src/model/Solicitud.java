@@ -21,7 +21,7 @@ public class Solicitud {
 	 * @param connection SQL.connection object
 	 * @throws Exception Error enviado desde la base de datos
 	 */
-	public static void atiendeSolicitud(Connection connection, String ivNumeroSolicitud) throws Exception {
+	public static void atenderSolicitud(Connection connection, String ivNumeroSolicitud) throws Exception {
 		String Statament = "pkAtention.pAtencion('" + ivNumeroSolicitud + "');";
 		ConnectionDB.send(connection, Statament);
 	}
