@@ -1,5 +1,6 @@
 package ui;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javafx.event.ActionEvent;
@@ -86,6 +87,9 @@ public class ControllerUserECM {
 	private ChoiceBox<String> cbTipoUsuario;
 
 	@FXML
+	private ChoiceBox<String> cbTipo;
+
+	@FXML
 	void cancelar(ActionEvent event) {
 		((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
 	}
@@ -106,52 +110,50 @@ public class ControllerUserECM {
 			alert.showAndWait();
 		}
 
+		int cant = 0;
+		String[] datosImprimir = new String[6];
+		String tipoConsulta = cbTipo.getSelectionModel().getSelectedItem().toString();
+
+		System.out.println(tipoConsulta);
 		if (flag) {
-
 			try {
-				
-				if(Main.pc != null) {
-					System.out.println("distinto de nuuuuuuull");
-				}
-				System.out.println("cedula: " + cedula );
-				System.out.println("YESS " + Main.pc.consultClient ("1638052477599"));
-				
-				String cliente = Main.pc.consultClient(cedula);
-				String funcionario = Main.pc.consultFuncionario(cedula);
 
-				if (cliente != null) {
-
-					System.out.println(cliente);
-					datosUsuario = cliente.split(",");
+				if (tipoConsulta.equals("Cliente")) {
+					// System.out.println(Main.pc.consultClient(cedula) + " sin");
+					String cliente = Main.pc.consultClient(cedula);
+					// System.out.println(cliente + "----------");
+					String[] datosC = cliente.split(",");
+					for (int i = 0; i < datosC.length; i++) {
+						System.out.println(datosC[i]);
+					}
+					cant = datosC.length;
+					datosImprimir = new String[] { "Cliente", datosC[1], datosC[0], datosC[3], datosC[4], datosC[5] };
 				} else {
-					System.out.println(funcionario);
-					datosUsuario = cliente.split(","); 
+
+					String funcionario = Main.pc.consultFuncionario(cedula);
+					String[] datosF = funcionario.split(",");
+					for (int i = 0; i < datosF.length; i++) {
+						System.out.println(datosF[i]);
+					}
+					cant = datosF.length;
+					datosImprimir = new String[] { "Funcionario", datosF[0], datosF[1], datosF[4], datosF[5],
+							datosF[6] };
 
 				}
-				
-				System.out.println("dato en pos 0: "+datosUsuario[0]);
 
 			} catch (Exception e) {
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setTitle("Error");
-				flag = false;
-				alert.setHeaderText("Consulta de usuarios.");
-				alert.setContentText("El usuario con la cédula: " + cedula + " no se encuentra.");
-				alert.showAndWait();
 			}
 
-			boolean condicion = false;
+			boolean condicion = cant > 0 ? true : false;
 
 			if (condicion) {
 				setDisable(false);
 				if (ControllerMenu.ecm == 2) {
 
 				} else {
-					// Cambiar valores de los labels
-					changeLabels(new String[] { "TIPO", "ID", "NOMBRE", "DIRECCIÓN", "FECHA", "TELÉFONO" });
+					changeLabels(datosImprimir);
 				}
 			} else {
-
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Información");
 				alert.setHeaderText("Consulta del usuario.");
@@ -165,10 +167,29 @@ public class ControllerUserECM {
 
 	@FXML
 	void eliminarUsuario(ActionEvent event) {
-
+		String tipoConsulta = cbTipo.getSelectionModel().getSelectedItem().toString();
 		boolean condicion = false;
+
+		if (tipoConsulta.equals("Cliente")) {
+
+			try {
+				Main.pc.DeletedClient(txtCedula.getText());
+				condicion = true;
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+				
+				condicion = false;
+			}
+		} else {
+			try {
+				Main.pc.DeletedFuncionario(txtCedula.getText());
+				condicion = true;
+			} catch (Exception e) {
+				condicion = false;
+			}
+		}
+
 		if (condicion) {
-			// Cambiar condición por el método que verifica si eliminó al usuario.
 
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Información");
@@ -181,9 +202,10 @@ public class ControllerUserECM {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error");
 			alert.setHeaderText("Proceso de eliminación.");
-			alert.setContentText("El usuario con la cédula " + txtCedula.getText() + " no ha sido eliminado.");
+			alert.setContentText("El usuario con la cédula " + txtCedula.getText() + " no se puede eliminar debido a que tiene varias solicitudes asociadas.");
 			alert.showAndWait();
 		}
+
 	}
 
 	@FXML
@@ -271,6 +293,9 @@ public class ControllerUserECM {
 		gridModificarUsuario.setVisible(false);
 		cbTipoUsuario.getItems().add("Cliente");
 		cbTipoUsuario.getItems().add("Funcionario");
+
+		cbTipo.getItems().add("Cliente");
+		cbTipo.getItems().add("Funcionario");
 
 		if (ControllerMenu.ecm == 0) {
 			// Eliminar

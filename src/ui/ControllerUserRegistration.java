@@ -55,7 +55,7 @@ public class ControllerUserRegistration {
 
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YY");
 		LocalDateTime date = dpFechaNacimiento.getValue().atStartOfDay();
-		System.out.println(date.format(formatter));
+		String fechaFormato = date.format(formatter);
 
 		String tipo = cbTipo.getSelectionModel().getSelectedItem();
 		if (txtId.getText() == null || txtId.getText().equals("")) {
@@ -136,27 +136,44 @@ public class ControllerUserRegistration {
 			String cedula = txtCedula.getText();
 			String direccion = txtDireccion.getText();
 			String telefono = txtTelefono.getText();
-			String fecha = date + "";
+			
 
+			System.out.println(tipo + " " + id + " " + nombre + " " + contrasena + " " + cedula + " " + direccion + " "
+					+ fechaFormato + " " + telefono);
 
-			if(tipo.equalsIgnoreCase("cliente")) {
+			boolean condicion = false;
+			if (tipo.equals("Cliente")) {
+
 				try {
-					Main.pc.AddClient(id, contrasena, nombre, cedula, direccion, fecha, telefono);				
-				}catch(Exception e) {
-					alert.setHeaderText("Error al agregar cliente.");
-					alert.setContentText("El cliente con la cédula : " +  cedula + " no fue agregado.");
-					alert.showAndWait();
-					e.printStackTrace();
+					Main.pc.AddClient(id, contrasena, nombre, cedula, direccion, fechaFormato, telefono);
+					condicion = true;
+				} catch (Exception e) {
+					
+					System.out.println(e.getMessage());
+					condicion = false;
 				}
-			}else {				
+			} else {
+
+				try {
+					Main.pc.AddFuncionario(id, contrasena, nombre, cedula, direccion, fechaFormato, telefono);
+					condicion = true;
+				} catch (Exception e) {
+					condicion = false;
+				}
+			}
+
+			if (condicion) {
 				alert = new Alert(AlertType.CONFIRMATION);
 				alert.setTitle("Confirmación");
 				alert.setHeaderText("Proceso agregar cliente.");
-				alert.setContentText("El cliente con la cédula : " +  cedula + " fue agregado exitosamente.");
+				alert.setContentText("El cliente con la cédula : " + cedula + " fue agregado exitosamente.");
 				alert.showAndWait();
+			} else {
+				alert.setHeaderText("Error al agregar cliente.");
+				alert.setContentText("El cliente con la cédula : " + cedula + " no fue agregado.");
+				alert.showAndWait();
+
 			}
-			System.out.println(tipo + " " + id + " " + nombre + " " + contrasena + " " + cedula + " " + direccion + " "
-					+ date + " " + telefono);
 
 			((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
 		}

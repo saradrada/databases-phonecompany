@@ -19,6 +19,7 @@ public class Main extends Application {
 	public static PhoneCompany pc;
 
 	public static void main(String[] args) {
+		
 		launch(args);
 
 	}
@@ -28,6 +29,7 @@ public class Main extends Application {
 		pc = new PhoneCompany();
 		try {
 			pc.createConection("P09551_1_4", "P09551_1_4_20191");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

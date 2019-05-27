@@ -28,7 +28,7 @@ public class ConnectionDB {
 			rs.next();
 			return rs.getString(1);
 		} catch (SQLException e) {
-			throw new Exception(e.getMessage());
+			throw new SQLException(e.getMessage());
 		}
 	}
 	
