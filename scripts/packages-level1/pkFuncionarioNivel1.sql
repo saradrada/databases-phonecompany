@@ -42,7 +42,7 @@ BEGIN
 	SELECT telefono INTO vTelefono
 	FROM Funcionario WHERE cedula = ivCedula;
 	
-	ovFuncionario := vId || '-' || vNombre || '-' || vContrasena || '-' || vCedula || '-' || vDireccion || '-' || vFecha_nacimiento || '-' || vTelefono;
+	ovFuncionario := vId || ',' || vNombre || ',' || vContrasena || ',' || vCedula || ',' || vDireccion || ',' || vFecha_nacimiento || ',' || vTelefono;
 	return ovFuncionario;
 	
 	EXCEPTION

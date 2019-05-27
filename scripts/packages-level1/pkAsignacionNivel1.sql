@@ -1,7 +1,10 @@
+--Paquete encargado de seleccionar un funcionario a una solicitud
 CREATE OR REPLACE PACKAGE pkAsignacion AS
-
+--Procedimiento encargado de insertar una asignacion a un funcionario en especifico.
 PROCEDURE pInsertarAsignacion (ivFecha Date, ivSolicitudNumero VARCHAR2, ivFuncionarioCedula VARCHAR2);
+--Procedimiento encargado de modificar una asignacion en especificio a partir de la cedula de un funcionario.
 PROCEDURE pModificarAsignacion (ivFecha Date, ivSolicitudNumero VARCHAR2, ivFuncionarioCedula VARCHAR2);
+
 PROCEDURE pBorrarAsignacion (ivSolicitudNumero VARCHAR2, ivFuncionarioCedula VARCHAR2);
 FUNCTION fConsultarAsignacion (ivSolicitudNumero VARCHAR2, ivFuncionarioCedula VARCHAR2) return varchar2;
 

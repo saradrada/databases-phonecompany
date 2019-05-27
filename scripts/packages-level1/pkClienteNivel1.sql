@@ -36,7 +36,7 @@ BEGIN
 	SELECT telefono INTO vTelefono
 	FROM Cliente WHERE cedula = ivCedula;
 	
-	ovCliente := vNombre || '-' || vContrasena || '-' || vCedula || '-' || vDireccion || '-' || vFecha_nacimiento || '-' || vTelefono;
+	ovCliente := vNombre || ',' || vContrasena || ',' || vCedula || ',' || vDireccion || ',' || vFecha_nacimiento || ',' || vTelefono;
 	return ovCliente;
 	
 	EXCEPTION
