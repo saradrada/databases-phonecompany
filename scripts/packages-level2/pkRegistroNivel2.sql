@@ -8,7 +8,6 @@ PROCEDURE pRegistrarCliente (ivId VARCHAR2,ivContrasenha VARCHAR2,ivNombre VARCH
 PROCEDURE pRegistrarFuncionario(ivId VARCHAR2,ivContrasena VARCHAR2,ivNombre VARCHAR2, ivCedula VARCHAR2,ivDireccion VARCHAR2, ivFecha DATE, ivTelefono VARCHAR2);
 PROCEDURE pRegistrarProducto(ivCodigo VARCHAR2, ivDescripcion VARCHAR2);
 FUNCTION fConsultarNumLibre return  VARCHAR2;
-
 END pkRegistro;
 /
 
