@@ -69,6 +69,8 @@ BEGIN
 	EXCEPTION
 	WHEN no_data_found THEN
 	RAISE_APPLICATION_ERROR(-20000,'No existe ningun cliente con la misma cedula '||ivCedula);
+	WHEN OTHER THEN
+	RAISE_APPLICATION_ERROR(-20000,'El cliente con cedula '||ivCedula||' no se puede eliminar debido a que tiene varias solicitudes asociadas');
 END pEliminarCliente;
 
 
