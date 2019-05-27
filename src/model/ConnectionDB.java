@@ -19,12 +19,14 @@ public class ConnectionDB {
 	
 	public static String recive(Connection con,String Statament) throws Exception {
 		try {
-			String text = "BEGIN ";
+			String text = "SELECT ";
 			text += Statament;
-			text += " END;";
+			text += " FROM dual";
+
 			PreparedStatement stmt = con.prepareStatement(text);
 			ResultSet rs = stmt.executeQuery(text);
-			return rs.getString("ovCliente");
+			rs.next();
+			return rs.getString(1);
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}
