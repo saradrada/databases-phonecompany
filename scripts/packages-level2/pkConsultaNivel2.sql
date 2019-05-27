@@ -6,6 +6,8 @@ FUNCTION fConsultarCliente (ivCedula VARCHAR2) return  VARCHAR2;
 FUNCTION fConsultarFuncionario (ivCedula VARCHAR2) return  VARCHAR2;
 
 FUNCTION fConsultarSolicitud_Funcionario (ivCedulaFuncionario VARCHAR2) return  VARCHAR2;
+
+FUNCTION fNumeroSolicitudesPorEstado(ivEstado Solicitud.estado%type) return NUMBER;
 FUNCTION fConsultarSolicitud_Estado (ivEstado VARCHAR2) return  VARCHAR2;
 
 FUNCTION fNumeroSolicitudesPorTipo(ivtipo solicitud.tipo_tipo%type) return NUMBER;
@@ -58,6 +60,18 @@ BEGIN
 END fConsultarSolicitud_Funcionario;
 
 
+FUNCTION fNumeroSolicitudesPorEstado(ivEstado SOLICITUD.estado%type) return NUMBER IS
+numerosol number(10);
+BEGIN
+  SELECT count(*) into numerosol
+  FROM SOLICITUD sol
+  WHERE sol.estado = ivEstado;
+  RETURN numerosol;
+EXCEPTION
+  WHEN others THEN raise_application_error(-20000, 'No hay solicitudes con ese tipo. ');
+END;
+
+
 FUNCTION fConsultarSolicitud_Estado (ivEstado VARCHAR2) RETURN VARCHAR2
 IS
     Vaux Solicitud.NUMEROSOLICITUD%TYPE;
@@ -99,7 +113,7 @@ BEGIN
     open cuConsulta4;
     open cuConsulta5;
     open cuConsulta6;
-    loop
+    FOR i IN 1..fnumeroSolicitudesPorEstado(ivEstado) LOOP
          fetch cuConsulta into Vaux;
          fetch cuConsulta2 into Vaux2;
          fetch cuConsulta3 into Vaux3;
@@ -109,7 +123,7 @@ BEGIN
          
         vSolicitudes := vSolicitudes||'NumSolicitud: '||Vaux||', Observacion: '||Vaux2||', Estado: '||Vaux3||', CodigoProducto: '||Vaux4||', Tipo: '||Vaux5||', CedulaCliente: '||Vaux6||CHR(10);
         EXIT when cuConsulta6%notfound;
-    end loop;
+    END LOOP;
     close cuConsulta6;
     close cuConsulta5;
     close cuConsulta4;
@@ -121,7 +135,7 @@ BEGIN
     EXCEPTION
     WHEN no_data_found THEN
     DBMS_OUTPUT.PUT_LINE ('Registro no encontrado');
-END fConsultarSolicitud_Estado;
+END;
 
 
 
