@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -24,19 +25,38 @@ public class ControllerMenu {
 	@FXML
 	private GridPane gridUsuarios;
 
-	// 0: eliminar usuario, 1: consultar usuario, 2: modificar usuario.
+    @FXML
+    private Label labTitulo;
+	
+
+    /**
+     * Variable para designar si se está gestionando la eliminacion (0), consulta(1) o modificación(2) de un usuario
+     */
 	public static int ecm;
 
+	/**
+	 * Método que asigna una solicitud a un funcionario
+	 * @param event
+	 */
 	@FXML
 	void asignarSolicitud(ActionEvent event) {
 
 	}
 
+	/**
+	 * Método que atiende una solicitud
+	 * @param event
+	 */
 	@FXML
 	void atenderSolicitud(ActionEvent event) {
 
 	}
-
+	
+	
+	/**
+	 * Método que consulta los datos de la base de datos
+	 * @param event
+	 */
 	@FXML
 	void consultarBD(ActionEvent event) {
 
@@ -68,12 +88,16 @@ public class ControllerMenu {
 	void gestionarBaseDatos(ActionEvent event) {
 		setVisibleGrid(gridMenu, false);
 		setVisibleGrid(gridBaseDatos, true);
+		labTitulo.setText("GESTIÓN DE BASE DATOS");
+		labTitulo.setVisible(true);
 	}
 
 	@FXML
 	void gestionarSolicitud(ActionEvent event) {
 		setVisibleGrid(gridMenu, false);
 		setVisibleGrid(gridSolicitud, true);
+		labTitulo.setText("GESTIÓN DE SOLICITUDES");
+		labTitulo.setVisible(true);
 	}
 
 	@FXML
@@ -81,6 +105,7 @@ public class ControllerMenu {
 		ecm = -1;
 		setVisibleGrid(gridMenu, false);
 		setVisibleGrid(gridUsuarios, true);
+		labTitulo.setVisible(true);
 	}
 
 	@FXML
@@ -94,6 +119,7 @@ public class ControllerMenu {
 		setVisibleGrid(gridBaseDatos, false);
 		setVisibleGrid(gridSolicitud, false);
 		setVisibleGrid(gridMenu, true);
+		labTitulo.setVisible(false);
 	}
 
 	@FXML
@@ -122,6 +148,7 @@ public class ControllerMenu {
 		setVisibleGrid(gridUsuarios, false);
 		setVisibleGrid(gridBaseDatos, false);
 		setVisibleGrid(gridSolicitud, false);
+		labTitulo.setVisible(false);
 	}
 
 	private void setVisibleGrid(GridPane grid, boolean b) {

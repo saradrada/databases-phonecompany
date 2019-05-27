@@ -16,9 +16,15 @@ import javafx.stage.Stage;
 
 public class ControllerLogin {
 
+	/**
+	 * Nombre de usuario
+	 */
 	@FXML
 	private TextField txtUser;
 
+	/**
+	 * Contraseña del usuario
+	 */
 	@FXML
 	private PasswordField txtPassword;
 
@@ -27,6 +33,10 @@ public class ControllerLogin {
 		System.exit(0);
 	}
 
+	/**
+	 * Método que controla el ingreso de los usuarios al sistema.
+	 * @param event
+	 */
 	@FXML
 	void ingresar(ActionEvent event) {
 
