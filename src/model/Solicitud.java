@@ -35,4 +35,14 @@ public class Solicitud {
 		ConnectionDB.send(connection, Statament);
 	}
 	
+	public static String ConsultarSolicitud_Cliente(Connection connection,String ivCedulaCliente ) throws Exception {
+		String Statament = "PKCONSULTA.fConsultarSolicitud_Cliente('"  + ivCedulaCliente+ "')";
+		return ConnectionDB.recive(connection, Statament);
+	}
+	
+	public static String ConsultarSolicitud_Funcionario(Connection connection,String ivCedulaFuncionario ) throws Exception {
+		String Statament = "PKCONSULTA.fConsultarSolicitud_Funcionario('"  + ivCedulaFuncionario+ "')";
+		return ConnectionDB.recive(connection, Statament);
+	}
+	
 }

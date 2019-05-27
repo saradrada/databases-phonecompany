@@ -35,7 +35,8 @@ public class phoneCompany {
 
 	public void AddFuncionario(String ivId, String ivContrasenha, String ivNombre, String ivCedula, String ivDireccion,
 			String ivFecha, String ivTelefono) throws Exception {
-		Funcionario.AddFuncionario(this.connection, ivId, ivContrasenha, ivNombre, ivCedula, ivDireccion, ivFecha, ivTelefono);
+		Funcionario.AddFuncionario(this.connection, ivId, ivContrasenha, ivNombre, ivCedula, ivDireccion, ivFecha,
+				ivTelefono);
 	}
 
 	public void DeletedFuncionario(String ivCedula) throws Exception {
@@ -44,7 +45,8 @@ public class phoneCompany {
 
 	public void EditFuncionario(String ivId, String ivContrasenha, String ivNombre, String ivCedula, String ivDireccion,
 			String ivFecha, String ivTelefono) throws Exception {
-		Funcionario.editFuncionario(this.connection, ivId, ivContrasenha, ivNombre, ivCedula, ivDireccion, ivFecha, ivTelefono);
+		Funcionario.editFuncionario(this.connection, ivId, ivContrasenha, ivNombre, ivCedula, ivDireccion, ivFecha,
+				ivTelefono);
 	}
 
 	private String consultFuncionario(String ivCedula) throws Exception {
@@ -76,8 +78,8 @@ public class phoneCompany {
 
 		try {
 			pc.creteConecction("P09551_1_4", "P09551_1_4_20191");
-
-			System.out.println(pc.consultFuncionario("1662062711099"));
+			System.out.println(pc.consultClient("1638052477599"));
+			System.out.println(Solicitud.ConsultarSolicitud_Cliente(pc.getConnection(), "1638052477599"));
 		} catch (Exception e) {
 			System.out.println(e);
 		}
