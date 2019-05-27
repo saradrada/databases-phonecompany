@@ -6,7 +6,8 @@ public class ConnectionDB {
 
 	/**
 	 * Ejecuta un procedimiento en la base de datos
-	 * @param con SQL connection
+	 * 
+	 * @param con       SQL connection
 	 * @param Statament Sentencia que se desea ejcutar
 	 * @throws Exception Mensaje de error de la base de datos
 	 */
@@ -25,7 +26,8 @@ public class ConnectionDB {
 
 	/**
 	 * Ejecuta una funcion en la base de datos
-	 * @param con SQL connection
+	 * 
+	 * @param con       SQL connection
 	 * @param Statament Sentencia que se desea ejcutar
 	 * @return String con la respuesta de la consulta
 	 * @throws Exception Mensaje de error de la base de datos
@@ -47,6 +49,7 @@ public class ConnectionDB {
 
 	/**
 	 * Establece la conexion con la base de datos
+	 * 
 	 * @param username usuario de la base de datos
 	 * @param password contraseña de la base de datos
 	 * @return SQL.Connection object
