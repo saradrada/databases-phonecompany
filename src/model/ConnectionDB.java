@@ -17,6 +17,19 @@ public class ConnectionDB {
 		}
 	}
 	
+	public static String recive(Connection con,String Statament) throws Exception {
+		try {
+			String text = "BEGIN ";
+			text += Statament;
+			text += " END;";
+			PreparedStatement stmt = con.prepareStatement(text);
+			ResultSet rs = stmt.executeQuery(text);
+			return rs.getString("ovCliente");
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+	}
+	
 	
 	public static Connection createConnection(String username, String password) throws Exception{
 		Connection c  = null;
