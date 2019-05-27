@@ -56,7 +56,7 @@ public class ControllerMenu {
 
 	@FXML
 	void eliminarUsuario(ActionEvent event) {
-
+		openNewWindow("user-delete.fxml");
 	}
 
 	@FXML
@@ -106,17 +106,8 @@ public class ControllerMenu {
 	}
 
 	@FXML
-	void registrarUsuario(ActionEvent event) {
-		Parent root;
-		try {
-			root = FXMLLoader.load(getClass().getResource("form-person.fxml"));
-			Stage stage = new Stage();
-			stage.setScene(new Scene(root));
-			stage.show();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	void registrarUsuario(ActionEvent event) {		
+		openNewWindow("user-register.fxml");
 	}
 
 	@FXML
@@ -134,6 +125,19 @@ public class ControllerMenu {
 			grid.toFront();
 		} else {
 			grid.toBack();
+		}
+	}
+	
+	private void openNewWindow(String fxmlPath) {
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource(fxmlPath));
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
