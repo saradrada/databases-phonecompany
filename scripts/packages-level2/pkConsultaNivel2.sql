@@ -1,9 +1,10 @@
 
-CREATE OR REPLACE PACKAGE "PKCONSULTA" AS 
+CREATE OR REPLACE PACKAGE pkConsulta AS 
 
 
 FUNCTION fConsultarCliente (ivCedula VARCHAR2) return  VARCHAR2;
 FUNCTION fConsultarFuncionario (ivCedula VARCHAR2) return  VARCHAR2;
+FUNCTION fConsultarSolicitud (ivNumeroSolicitud VARCHAR2) return VARCHAR2;
 
 FUNCTION fConsultarSolicitud_Funcionario (ivCedulaFuncionario VARCHAR2) return  VARCHAR2;
 
@@ -16,10 +17,10 @@ FUNCTION fConsultarSolicitud_Tipo (ivtipo VARCHAR2 ) return  VARCHAR2;
 FUNCTION fNumeroSolicitudesPorCliente(ivCliente SOLICITUD.Cliente_Cedula%type) return NUMBER;
 FUNCTION fConsultarSolicitud_Cliente(ivCliente VARCHAR2 ) return  VARCHAR2;
   
-  END PKCONSULTA;
-  /
+END pkConsulta;
+/
 
-CREATE OR REPLACE PACKAGE BODY PKCONSULTA AS
+CREATE OR REPLACE PACKAGE BODY pkConsulta AS
 
 FUNCTION fConsultarCliente (ivCedula VARCHAR2) return  VARCHAR2
 IS
@@ -40,22 +41,58 @@ BEGIN
 END fConsultarFuncionario;
 
 
-FUNCTION fConsultarSolicitud_Funcionario(ivCedulaFuncionario VARCHAR2) return varchar2
+FUNCTION fConsultarSolicitud (ivNumeroSolicitud VARCHAR2) return VARCHAR2
 IS
-    vSolicitudes VARCHAR2(500);
+    ovSolicitud			VARCHAR2(400);
+    vObservacion        VARCHAR2(30);
+	vEstado				VARCHAR2(30);
+	vProductoCodigo     VARCHAR2(30);
+    vTipo               VARCHAR2(50);
+    vCliente            VARCHAR(50);
+    
+    BEGIN
+    
+	SELECT observacion INTO vObservacion
+	FROM Solicitud WHERE numeroSolicitud = ivNumeroSolicitud;
+	SELECT estado INTO vEstado
+	FROM Solicitud WHERE numeroSolicitud = ivNumeroSolicitud;
+	SELECT Producto_codigo INTO vProductoCodigo
+	FROM Solicitud WHERE numeroSolicitud = ivNumeroSolicitud;
+	SELECT Tipo_tipo INTO vTipo
+	FROM Solicitud WHERE numeroSolicitud = ivNumeroSolicitud;
+	SELECT Cliente_cedula INTO vCliente
+	FROM Solicitud WHERE numeroSolicitud = ivNumeroSolicitud;
+	
+ 
+    ovSolicitud := vObservacion||','||vEstado||','||vProductoCodigo||','||vTipo||','||vCliente||CHR(10);
+    return ovSolicitud;
+	
+
+	EXCEPTION
+	WHEN no_data_found THEN
+	RAISE_APPLICATION_ERROR(-20000,'No existe ninguna solicitud con el codigo '||ivNumeroSolicitud);
+    
+    
+END fConsultarSolicitud;
+   
+
+FUNCTION fConsultarSolicitud_Funcionario(ivCedulaFuncionario VARCHAR2) return VARCHAR2
+IS
+    ovSolicitudes VARCHAR2(500);
     CURSOR cuConsulta IS
     SELECT Solicitud_numeroSolicitud
     FROM Asignacion 
-    WHERE Funcionario_cedula = ivCedulaFuncionario;
+    WHERE Funcionario_cedula = ivCedulaFuncionario;    
+    
 BEGIN
     FOR rc IN cuConsulta LOOP
-    vSolicitudes := vSolicitudes ||','|| rc.Solicitud_numeroSolicitud;
+    ovSolicitudes := ovSolicitudes ||''|| rc.Solicitud_numeroSolicitud ||','|| fConsultarSolicitud(rc.Solicitud_numeroSolicitud)||CHR(10);
     END LOOP;
-    RETURN vSolicitudes;
+    RETURN ovSolicitudes;
     
     EXCEPTION
     WHEN no_data_found THEN
-    RAISE_APPLICATION_ERROR(-2000,'No se encontro ninguna asignacion con el numero de solicitud: '||ivCedulaFuncionario);
+    RAISE_APPLICATION_ERROR(-2000,'No se encontro ninguna asignacion al funcionario: '||ivCedulaFuncionario);
 
 END fConsultarSolicitud_Funcionario;
 
@@ -70,7 +107,6 @@ BEGIN
 EXCEPTION
   WHEN others THEN raise_application_error(-20000, 'No hay solicitudes con ese tipo. ');
 END;
-
 
 FUNCTION fConsultarSolicitud_Estado (ivEstado VARCHAR2) RETURN VARCHAR2
 IS
@@ -121,7 +157,7 @@ BEGIN
          fetch cuConsulta5 into Vaux5;
          fetch cuConsulta6 into Vaux6;
          
-        vSolicitudes := vSolicitudes||'NumSolicitud: '||Vaux||', Observacion: '||Vaux2||', Estado: '||Vaux3||', CodigoProducto: '||Vaux4||', Tipo: '||Vaux5||', CedulaCliente: '||Vaux6||CHR(10);
+        vSolicitudes := vSolicitudes||''||Vaux||','||Vaux2||','||Vaux3||','||Vaux4||','||Vaux5||','||Vaux6||CHR(10);
         EXIT when cuConsulta6%notfound;
     END LOOP;
     close cuConsulta6;
@@ -136,9 +172,6 @@ BEGIN
     WHEN no_data_found THEN
     DBMS_OUTPUT.PUT_LINE ('Registro no encontrado');
 END;
-
-
-
 
 FUNCTION fnumeroSolicitudesPorTipo(ivtipo solicitud.tipo_tipo%type) return number IS
 numerosol number(10);
@@ -201,7 +234,7 @@ BEGIN
          fetch cuConsulta5 into Vaux5;
          fetch cuConsulta6 into Vaux6;
          
-        vSolicitudes := vSolicitudes||'NumSolicitud: '||Vaux||', Observacion: '||Vaux2||', Estado: '||Vaux3||', CodigoProducto: '||Vaux4||', Tipo: '||Vaux5||', CedulaCliente: '||Vaux6||CHR(10);
+        vSolicitudes := vSolicitudes||''||Vaux||','||Vaux2||','||Vaux3||','||Vaux4||','||Vaux5||','||Vaux6||CHR(10);
       
     end LOOP;
    
@@ -281,7 +314,7 @@ BEGIN
          fetch cuConsulta5 into Vaux5;
          fetch cuConsulta6 into Vaux6;
          
-        vSolicitudes := vSolicitudes||'NumSolicitud: '||Vaux||', Observacion: '||Vaux2||', Estado: '||Vaux3||', CodigoProducto: '||Vaux4||', Tipo: '||Vaux5||', CedulaCliente: '||Vaux6||CHR(10);
+        vSolicitudes := vSolicitudes||''||Vaux||','||Vaux2||','||Vaux3||','||Vaux4||','||Vaux5||','||Vaux6||CHR(10);
       
     end LOOP;
    
@@ -299,4 +332,3 @@ BEGIN
 END;
 
 END pkConsulta;
-/
