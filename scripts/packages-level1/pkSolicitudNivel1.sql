@@ -1,35 +1,35 @@
 CREATE OR REPLACE PACKAGE pkSolicitud AS
    
-    --Procedimiento .
-    --Entrada: 
+    --Representa el procedimiento de insertar una solicitud.
+    --Entrada: Numero de la Solicitud, Observacion de la Solicitud, ivEstado de la Solicitud, Codigo del Producto de la Solicitud, Cedula del Cliente de la Solicitud, Codigo del tipo de la Solicitud
     PROCEDURE pInsertarSolicitud( ivNumeroSolicitud VARCHAR2,ivObservacion  VARCHAR2,ivEstado  VARCHAR2,ivProductoCodigo VARCHAR2,ivCedulaCliente VARCHAR2,ivTipoCodigo VARCHAR2);
     
-    --Procedimiento .
-    --Entrada: 
+    --Procedimiento Representa el procedimiento de modificar una solicitud.
+    --Entrada: Numero de la Solicitud, Observacion de la Solicitud, ivEstado de la Solicitud, Codigo del Producto de la Solicitud, Cedula del Cliente de la Solicitud, Codigo del tipo de la Solicitud
     PROCEDURE pModificarSolicitud( ivNumeroSolicitud VARCHAR2,ivObservacion  VARCHAR2,ivEstado  VARCHAR2,ivProductoCodigo VARCHAR2,ivCedulaCliente VARCHAR2,ivTipoCodigo VARCHAR2);
     
-    --Procedimiento .
-    --Entrada: 
+    --Representa el procedimiento de modificar la observacion de una solicitud.
+    --Entrada: Numero de la Solicitud, observacion de la solicitud
     PROCEDURE pModificarObservacionSolicitud(ivNumeroSolicitud VARCHAR2, ivObservacion VARCHAR2);
     
-    --Procedimiento .
-    --Entrada: 
+    --Representa el procedimiento de modificar el estado de una solicitud.
+    --Entrada: Numero de la Solicitud, Estado de la solicitud
     PROCEDURE pModificarEstadoSolicitud(ivNumeroSolicitud VARCHAR2, ivEstado VARCHAR2);
     
-    --Procedimiento .
-    --Entrada: 
+    --Representa el procedimiento de modificar un cliente de una solicitud.
+    --Entrada: Numero de la Solicitud, cedula del cliente
     PROCEDURE pModificarClienteIdSolicitud(ivNumeroSolicitud VARCHAR2, ivCedulaCliente VARCHAR2);
     
-    --Procedimiento .
-    --Entrada: 
+    --Representa el procedimiento de modificar el codigo del producto de una solicitud
+    --Entrada: Numero de la Solicitud, codigo del producto
     PROCEDURE pModificarProductoCodigoSolicitud(ivNumeroSolicitud VARCHAR2, ivProductoCodigo VARCHAR2);
     
-    --Procedimiento .
-    --Entrada: 
+    --Representa el procedimiento de modificar el codigo del tipo de una solicitud.
+    --Entrada: Numero de la Solicitud, codigo del tipo
     PROCEDURE pModificarTipoCodigoSolicitud(ivNumeroSolicitud VARCHAR2, ivTipoCodigo VARCHAR2);
     
-    --Procedimiento .
-    --Entrada: 
+    --Representa el procedimiento de borrar una solicitud.
+    --Entrada: Numero de la Solicitud
     PROCEDURE borrarSolicitud(ivNumeroSolicitud VARCHAR2);
     
     --Función que permite consultar una solicitud en la base de datos. 

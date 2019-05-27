@@ -1,8 +1,20 @@
 CREATE OR REPLACE PACKAGE pkTipo AS
-
+    
+    --Representa el procedimientode insertar un tipo en la base de datos
+    --Entrada: Tipo, descripcioon del tipo
     PROCEDURE pInsertarTipo (ivTipo VARCHAR2, ivDescripcion VARCHAR2);
+    
+    --Representa el procedimientode insertar un tipo en la base de datos
+    --Entrada: Tipo, descripcion del tipo
     PROCEDURE pModificarDescripcionTipo (ivTipo VARCHAR2, ivDescripcion VARCHAR2);
+    
+    --Representa el procedimiento de borrar un tipo s
+    --Entrada: Tipo del tipo
     PROCEDURE pBorrarTipo(ivTipo VARCHAR2);
+    
+    --Función que permite consultar el tipo
+    --Entrada: Tipo del tipo
+    --Salida: Datos del tipo que se desea consultar
     FUNCTION fConsultarTipo (ivTipo VARCHAR2) return varchar2;
 
 END pkTipo;
