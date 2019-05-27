@@ -42,12 +42,15 @@ CREATE OR REPLACE PACKAGE BODY pkAsignacionNivel2 IS
     END pAsignacionDirecta; 
     
     PROCEDURE pAsignacionMasiva 
-       IS
-      FOR i IN (SELECT solicitud.numerosolicitud,ASIGNACION.fecha FROM ASIGNACION INNER JOIN SOLICITUD ON ASIGNACION.SOLICITUD_NUMEROSOLICITUD=solicitud.numerosolicitud) LOOP
-        SELECT ASIGNACION.fecha INTO ovDate FROM ASIGNACION 
-        WHERE SOLICITUD.numerosolicitud=i.numerosolicitud;
+      IS
+      ovDate DATE;
+    BEGIN
+    FOR i IN (SELECT SOLICITUD.NUMEROSOLICITUD,ASIGNACION.FECHA FROM ASIGNACION INNER JOIN SOLICITUD ON ASIGNACION.SOLICITUD_NUMEROSOLICITUD=SOLICITUD.NUMEROSOLICITUD
+        WHERE SOLICITUD.NUMEROSOLICITUD=i.NUMEROSOLICITUD) LOOP
+        SELECT ASIGNACION.FECHA INTO ovDate FROM ASIGNACION 
+        WHERE SOLICITUD.NUMEROSOLICITUD=i.NUMEROSOLICITUD;
         IF SYSDATE-ovDate>=4 THEN
-            pkAsignacionNivel2.pAsignarSolicitud(i.numerosolicitud);
+            pkAsignacionNivel2.pAsignarAutomaticamente(i.NUMEROSOLICITUD);
         END IF;
     END LOOP;
         exception
