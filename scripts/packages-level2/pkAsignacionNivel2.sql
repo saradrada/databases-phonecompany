@@ -1,10 +1,16 @@
 CREATE OR REPLACE PACKAGE pkAsignacionNivel2 AS
 
-   
+    --Representa el procedimiento de asignar una solicitud al funcionario
+    --Entrada: El numero de la solicitud
     PROCEDURE pAsignarSolicitud ( ivNumSolicitud IN SOLICITUD.NUMEROSOLICITUD%TYPE );
-     PROCEDURE pAsignacionDirecta(vNumeroSolicitud IN SOLICITUD.NUMEROSOLICITUD%TYPE, 
-                                 vCedulaFuncionario IN FUNCIONARIO.CEDULA%TYPE);
+    
+    --Representa el procedimiento de realizar una asignacion directa con el funcionario
+    --Entrada: El número de la solicitud y la cedula del funcionario
+    PROCEDURE pAsignacionDirecta(vNumeroSolicitud IN SOLICITUD.NUMEROSOLICITUD%TYPE,vCedulaFuncionario IN FUNCIONARIO.CEDULA%TYPE);
+   
+    --Represeta el procedimiento de asignacion cuando existen muchas asiganciones
     PROCEDURE pAsignacionMasiva;
+
    
 END pkAsignacionNivel2;
 /
