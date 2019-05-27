@@ -51,7 +51,12 @@ public class phoneCompany {
 		
 		try {
 			pc.creteConecction("P09551_1_4", "P09551_1_4_20191");
+<<<<<<< HEAD
 			pc.EditClient("567890", "456789", "Klan", "4567890", "tierra", "26-05-2019", "456789");
+=======
+			pc.AddClient("567890", "456789", "Klan", "4567890", "aqui", "26-05-2019", "456789");
+//			pc.DeletedClient("4567890");
+>>>>>>> 6c10e28f13a7f469094631bae6e23fa9fff45c3c
 		} catch (Exception e) {
 			System.out.println(e);
 		}
