@@ -53,7 +53,7 @@ public class ControllerUserRegistration {
 		alert.setTitle("Error");
 		boolean flag = true;
 
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yy");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-mm-yy");
 		LocalDate date = dpFechaNacimiento.getValue();
 
 		String tipo = cbTipo.getSelectionModel().getSelectedItem();
@@ -112,17 +112,19 @@ public class ControllerUserRegistration {
 				alert.showAndWait();
 			}
 
-		} else if (date == null) {
-			flag = false;
-			alert.setHeaderText("Error en la fecha.");
-			alert.setContentText("La fecha no puede estar vacía. Por favor seleccione una.");
-			alert.showAndWait();
-
 		} else if (tipo == null || tipo.equals("")) {
 			flag = false;
 			alert.setHeaderText("Error en el tipo.");
 			alert.setContentText("El tipo no puede estar vacío. Por favor seleccione uno.");
 			alert.showAndWait();
+		}
+
+		if (dpFechaNacimiento.getValue() == null) {
+			flag = false;
+			alert.setHeaderText("Error en la fecha.");
+			alert.setContentText("La fecha no puede estar vacía. Por favor seleccione una.");
+			alert.showAndWait();
+
 		}
 
 		if (flag) {

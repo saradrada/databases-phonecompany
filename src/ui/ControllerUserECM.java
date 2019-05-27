@@ -1,8 +1,9 @@
 package ui;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
@@ -84,8 +85,6 @@ public class ControllerUserECM {
 	@FXML
 	private ChoiceBox<String> cbTipoUsuario;
 
-	private boolean existeUsuario;
-
 	@FXML
 	void cancelar(ActionEvent event) {
 		((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
@@ -108,17 +107,23 @@ public class ControllerUserECM {
 
 		if (flag) {
 			// Cambiar condición por el método que verifica si existe.
-			boolean condicion = false;
+			boolean condicion = true;
 
 			if (condicion) {
-				existeUsuario = true;
-			}
-
-			if (existeUsuario) {
 				setDisable(false);
+				if (ControllerMenu.ecm == 2) {
 
-				// Cambiar valores de los labels
-				changeLabels(new String[] { "TIPO", "ID", "NOMBRE", "DIRECCIÓN", "FECHA", "TELÉFONO" });
+				} else {
+					// Cambiar valores de los labels
+					changeLabels(new String[] { "TIPO", "ID", "NOMBRE", "DIRECCIÓN", "FECHA", "TELÉFONO" });
+				}
+			} else {
+
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Información");
+				alert.setHeaderText("Consulta del usuario.");
+				alert.setContentText("El usuario con la cédula " + txtCedula.getText() + " no existe.");
+				alert.showAndWait();
 
 			}
 		}
@@ -131,12 +136,14 @@ public class ControllerUserECM {
 		boolean condicion = false;
 		if (condicion) {
 			// Cambiar condición por el método que verifica si eliminó al usuario.
+
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Información");
 			alert.setHeaderText("Proceso de eliminación.");
 			alert.setContentText("El usuario con la cédula " + txtCedula.getText() + " ha sido eliminado.");
 			alert.showAndWait();
 			((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
+
 		} else {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error");
@@ -149,30 +156,76 @@ public class ControllerUserECM {
 	@FXML
 	void modificarUsuario(ActionEvent event) {
 
-		String cedula = txtCedula.getText();
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("Error");
+		// Cambiar condición por el método que verifica si existe.
 		boolean flag = true;
 
-		if (cedula == null || cedula.equals("")) {
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Error");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yy");
+		LocalDate date = fecha.getValue();
+
+		String tipo = cbTipoUsuario.getSelectionModel().getSelectedItem();
+		if (txtId.getText() == null || txtId.getText().equals("")) {
 			flag = false;
-			alert.setHeaderText("Error en la cédula.");
-			alert.setContentText("La cédula no puede estar vacía.");
+			alert.setHeaderText("Error en el Id.");
+			alert.setContentText("El Id no puede estar vacío.");
+			alert.showAndWait();
+
+		} else if (txtNombre.getText() == null || txtNombre.getText().equals("")) {
+			flag = false;
+			alert.setHeaderText("Error en el nombre.");
+			alert.setContentText("El nombre no puede estar vacío.");
+			alert.showAndWait();
+		} else if (txtDireccion.getText() == null || txtDireccion.getText().equals("")) {
+			flag = false;
+			alert.setHeaderText("Error en la dirección.");
+			alert.setContentText("La dirección no puede estar vacía.");
+			alert.showAndWait();
+
+		} else if (txtTelefono.getText() == null || txtTelefono.getText().equals("")) {
+			flag = false;
+			alert.setHeaderText("Error en el teléfono.");
+			alert.setContentText("El teléfono no puede estar vacío.");
+			alert.showAndWait();
+
+		} else if (txtTelefono.getText() != null) {
+			try {
+				int telefono = Integer.parseInt(txtTelefono.getText());
+			} catch (Exception e) {
+				flag = false;
+				alert.setHeaderText("Error en el teléfono.");
+				alert.setContentText("El teléfono sólo debe contener caracters numéricos.");
+				alert.showAndWait();
+			}
+		} else if (tipo == null || tipo.equals("")) {
+			flag = false;
+			alert.setHeaderText("Error en el tipo.");
+			alert.setContentText("El tipo no puede estar vacío. Por favor seleccione uno.");
 			alert.showAndWait();
 		}
 
+		if (fecha.getValue() == null) {
+			flag = false;
+			alert.setHeaderText("Error en la fecha.");
+			alert.setContentText("La fecha no puede estar vacía. Por favor seleccione una.");
+			alert.showAndWait();
+
+		}
 		if (flag) {
-			// Cambiar condición por el método que verifica si existe.
-			boolean condicion = false;
 
-			if (condicion) {
-				existeUsuario = true;
-			}
+			String id = txtId.getText();
+			String nombre = txtNombre.getText();
+			String direccion = txtDireccion.getText();
+			String telefono = txtTelefono.getText();
 
-			if (existeUsuario) {
-				setDisable(false);
+			alert = new Alert(AlertType.CONFIRMATION);
+			alert.setTitle("Confirmación");
+			alert.setHeaderText("Modificación de usuario.");
+			alert.setContentText(
+					"El usuario con la cédula: " + txtCedula.getText() + " ha sido modificado exitosamente.");
+			alert.showAndWait();
 
-			}
+			((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
 		}
 
 	}
@@ -183,6 +236,8 @@ public class ControllerUserECM {
 		btnEliminar.setVisible(false);
 		btnModificar.setVisible(false);
 		gridModificarUsuario.setVisible(false);
+		cbTipoUsuario.getItems().add("Cliente");
+		cbTipoUsuario.getItems().add("Funcionario");
 
 		if (ControllerMenu.ecm == 0) {
 			// Eliminar
