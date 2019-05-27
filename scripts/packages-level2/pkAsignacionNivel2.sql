@@ -51,7 +51,7 @@ CREATE OR REPLACE PACKAGE BODY pkAsignacionNivel2 IS
        and (sysdate - FECHA) >= 4 ; 
         BEGIN
       for solicitud in cuSolicitudes Loop
-         pasignarSolicitud(solicitud.NUMEROSOLICITUD);    
+         pAsignarSolicitud(solicitud.NUMEROSOLICITUD);    
       end loop;
     exception
   when others then raise_application_error(-20000, 'error en asignar masiva: '||sqlerrm);
