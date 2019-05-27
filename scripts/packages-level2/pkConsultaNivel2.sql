@@ -2,20 +2,58 @@
 CREATE OR REPLACE PACKAGE pkConsulta AS 
 
 
-FUNCTION fConsultarCliente (ivCedula VARCHAR2) return  VARCHAR2;
-FUNCTION fConsultarFuncionario (ivCedula VARCHAR2) return  VARCHAR2;
-FUNCTION fConsultarSolicitud (ivNumeroSolicitud VARCHAR2) return VARCHAR2;
+    --Función que permite consultar un cliente en la base de datos. 
+    --Entrada: Cedula del cliente
+    --Salida: Datos del cliente que se desea consultar
+    FUNCTION fConsultarCliente (ivCedula VARCHAR2) return  VARCHAR2;
+    
+    --Función que permite consultar un funcionario en la base de datos. 
+    --Entrada: Cedula del funcionario
+    --Salida: Datos del funcionario que se desea consultar
+    FUNCTION fConsultarFuncionario (ivCedula VARCHAR2) return  VARCHAR2;
+    
+    --Función que permite consultar una solicitud en la base de datos. 
+    --Entrada: Numero de solicitud
+    --Salida: Datos de la solicitud que se desea consultar
+    FUNCTION fConsultarSolicitud (ivNumeroSolicitud VARCHAR2) return VARCHAR2;
+    
+    --Función que permite filtrar las solicitudes por funcionario
+    --Entrada: Cedula del funcionario
+    --Salida: Listado de las solicitudes del funcionario
+    FUNCTION fConsultarSolicitud_Funcionario (ivCedulaFuncionario VARCHAR2) return  VARCHAR2;
+   
+    --Función que permite filtrar las solicitudes por el estado en el que se encuentren.
+    --Entrada: Estado de las solicitudes
+    --Salida: Listado de las solicitudes filtradas por estado
+    FUNCTION fConsultarSolicitud_Estado (ivEstado VARCHAR2) return  VARCHAR2;
+   
+   
+    --Función auxiliar para filtrar por estado, permite el conteo de la cantidad de solicitudes con el estado determinado
+    --Entrada: Estado de las solicitudes
+    --Salida: Un numero con la cantidad de solicitudes
+    FUNCTION fNumeroSolicitudesPorEstado(ivEstado Solicitud.estado%type) return NUMBER;
+   
+    --Función que permite filtrar las solicitudes por el tipo en el que se encuentren.
+    --Entrada: Tipo de las solicitudes
+    --Salida: Listado de las solicitudes filtradas por tipo
+    FUNCTION fConsultarSolicitud_Tipo (ivtipo VARCHAR2 ) return  VARCHAR2;
+   
+    --Función auxiliar para filtrar por tipo, permite el conteo de la cantidad de solicitudes con el tipo determinado
+    --Entrada: Tipo de las solicitudes
+    --Salida: Un numero con la cantidad de solicitudes
+    FUNCTION fNumeroSolicitudesPorTipo(ivtipo solicitud.tipo_tipo%type) return NUMBER;
+  
+    --Función que permite filtrar las solicitudes por el cliente.
+    --Entrada: Cliente determinado por solicitud
+    --Salida: Listado de las solicitudes filtradas por cliente
+    FUNCTION fConsultarSolicitud_Cliente(ivCliente VARCHAR2 ) return  VARCHAR2;
+  
+    --Función auxiliar para filtrar por cliente, permite el conteo de la cantidad de solicitudes con el cliente determinado.
+    --Entrada: Cliente determinado por solicitud
+    --Salida: Un numero con la cantidad de solicitudes
+    FUNCTION fNumeroSolicitudesPorCliente(ivCliente SOLICITUD.Cliente_Cedula%type) return NUMBER;
+    
 
-FUNCTION fConsultarSolicitud_Funcionario (ivCedulaFuncionario VARCHAR2) return  VARCHAR2;
-
-FUNCTION fNumeroSolicitudesPorEstado(ivEstado Solicitud.estado%type) return NUMBER;
-FUNCTION fConsultarSolicitud_Estado (ivEstado VARCHAR2) return  VARCHAR2;
-
-FUNCTION fNumeroSolicitudesPorTipo(ivtipo solicitud.tipo_tipo%type) return NUMBER;
-FUNCTION fConsultarSolicitud_Tipo (ivtipo VARCHAR2 ) return  VARCHAR2;
-
-FUNCTION fNumeroSolicitudesPorCliente(ivCliente SOLICITUD.Cliente_Cedula%type) return NUMBER;
-FUNCTION fConsultarSolicitud_Cliente(ivCliente VARCHAR2 ) return  VARCHAR2;
   
 END pkConsulta;
 /
