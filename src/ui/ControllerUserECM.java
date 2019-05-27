@@ -2,14 +2,18 @@ package ui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 
-public class ControllerUserElimination {
+public class ControllerUserECM {
 
 	@FXML
 	private TextField txtCedula;
@@ -51,7 +55,22 @@ public class ControllerUserElimination {
 	private Label labTelefono;
 
 	@FXML
+	private Label labTitulo;
+
+	@FXML
 	private Button btnEliminar;
+
+	@FXML
+	private Button btnModificar;
+
+	@FXML
+	private GridPane gridModificarUsuario;
+
+	@FXML
+	private DatePicker fecha;
+
+	@FXML
+	private ChoiceBox<String> cbTipoUsuario;
 
 	private boolean existeUsuario;
 
@@ -87,12 +106,7 @@ public class ControllerUserElimination {
 				setDisable(false);
 
 				// Cambiar valores de los labels
-				labTipo.setText("TIPO");
-				labId.setText("ID");
-				labNombre.setText("NOMBRE");
-				labDireccion.setText("DIRECCIÓN");
-				labFecha.setText("FECHA");
-				labTelefono.setText("TELEFONO");
+				changeLabels(new String[] { "TIPO", "ID", "NOMBRE", "DIRECCIÓN", "FECHA", "TELÉFONO" });
 
 			}
 		}
@@ -121,12 +135,38 @@ public class ControllerUserElimination {
 	}
 
 	@FXML
+	void modificarUsuario(ActionEvent event) {
+
+	}
+
+	@FXML
 	void initialize() {
 		setDisable(true);
+		btnEliminar.setVisible(false);
+		btnModificar.setVisible(false);
+		gridModificarUsuario.setVisible(false);
+
+		if (ControllerMenu.ecm == 0) {
+			// Eliminar
+			labTitulo.setText("Formulario Eliminación Usuario");
+			btnEliminar.setVisible(true);
+
+		} else if (ControllerMenu.ecm == 1) {
+			// Consultar
+			labTitulo.setText("Formulario Consulta de Usuarios");
+
+		} else {
+			// Modificar
+			labTitulo.setText("Formulario Modificación Usuario");
+			btnModificar.setVisible(true);
+			gridModificarUsuario.setVisible(true);
+		}
+
 	}
 
 	private void setDisable(boolean isDisable) {
 		btnEliminar.setDisable(isDisable);
+		btnModificar.setDisable(isDisable);
 		labId1.setDisable(isDisable);
 		labNombre1.setDisable(isDisable);
 		labDireccion1.setDisable(isDisable);
@@ -139,6 +179,15 @@ public class ControllerUserElimination {
 		labDireccion.setDisable(isDisable);
 		labFecha.setDisable(isDisable);
 		labTelefono.setDisable(isDisable);
+	}
+
+	private void changeLabels(String[] datosUsuario) {
+		labTipo.setText(datosUsuario[0]);
+		labId.setText(datosUsuario[1]);
+		labNombre.setText(datosUsuario[2]);
+		labDireccion.setText(datosUsuario[3]);
+		labFecha.setText(datosUsuario[4]);
+		labTelefono.setText(datosUsuario[5]);
 	}
 
 }
