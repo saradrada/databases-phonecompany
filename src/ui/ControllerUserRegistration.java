@@ -136,10 +136,9 @@ public class ControllerUserRegistration {
 			String cedula = txtCedula.getText();
 			String direccion = txtDireccion.getText();
 			String telefono = txtTelefono.getText();
-			
 
-			System.out.println(tipo + " " + id + " " + nombre + " " + contrasena + " " + cedula + " " + direccion + " "
-					+ fechaFormato + " " + telefono);
+//			System.out.println(tipo + " " + id + " " + nombre + " " + contrasena + " " + cedula + " " + direccion + " "
+//					+ fechaFormato + " " + telefono);
 
 			boolean condicion = false;
 			if (tipo.equals("Cliente")) {
@@ -148,7 +147,7 @@ public class ControllerUserRegistration {
 					Main.pc.AddClient(id, contrasena, nombre, cedula, direccion, fechaFormato, telefono);
 					condicion = true;
 				} catch (Exception e) {
-					
+
 					System.out.println(e.getMessage());
 					condicion = false;
 				}

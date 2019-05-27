@@ -58,10 +58,13 @@ CREATE OR REPLACE PACKAGE BODY pkCliente AS
         vFecha_nacimiento   DATE;
         vTelefono           VARCHAR2(30); 
         BEGIN
+         SELECT nombre   INTO vNombre
+            FROM Cliente WHERE cedula = ivCedula;
+            SELECT id   INTO vId
+            FROM Cliente WHERE cedula = ivCedula;
             SELECT contraseña INTO vContrasena
             FROM Cliente WHERE cedula = ivCedula;
-            SELECT cedula INTO vCedula
-            FROM Cliente WHERE cedula = ivCedula;
+            
             SELECT direccion INTO vDireccion
             FROM Cliente  WHERE cedula = ivCedula;
             SELECT direccion INTO vDireccion
@@ -71,7 +74,7 @@ CREATE OR REPLACE PACKAGE BODY pkCliente AS
             SELECT telefono INTO vTelefono
             FROM Cliente WHERE cedula = ivCedula;
 	
-            ovCliente := vNombre || ',' || vContrasena || ',' || vCedula || ',' || vDireccion || ',' || vFecha_nacimiento || ',' || vTelefono;
+            ovCliente := vNombre || ',' || vId || ','  || vDireccion || ',' || vFecha_nacimiento || ',' || vTelefono|| ',' ||vContrasena;
             return ovCliente;
 	
         EXCEPTION

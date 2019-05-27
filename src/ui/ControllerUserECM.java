@@ -1,7 +1,6 @@
 package ui;
 
-import java.sql.SQLException;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -114,23 +113,26 @@ public class ControllerUserECM {
 		String[] datosImprimir = new String[6];
 		String tipoConsulta = cbTipo.getSelectionModel().getSelectedItem().toString();
 
+		String cliente = "";
+		String funcionario = "";
 		System.out.println(tipoConsulta);
 		if (flag) {
 			try {
 
 				if (tipoConsulta.equals("Cliente")) {
 					// System.out.println(Main.pc.consultClient(cedula) + " sin");
-					String cliente = Main.pc.consultClient(cedula);
+					String cliente1 = Main.pc.consultClient(cedula);
 					// System.out.println(cliente + "----------");
-					String[] datosC = cliente.split(",");
+					String[] datosC = cliente1.split(",");
 					for (int i = 0; i < datosC.length; i++) {
 						System.out.println(datosC[i]);
+
 					}
 					cant = datosC.length;
-					datosImprimir = new String[] { "Cliente", datosC[1], datosC[0], datosC[3], datosC[4], datosC[5] };
-				} else {
+					datosImprimir = new String[] { "Cliente", datosC[1], datosC[0], datosC[2], datosC[3], datosC[4] };
 
-					String funcionario = Main.pc.consultaFuncionario(cedula);
+				} else {
+					funcionario = Main.pc.consultaFuncionario(cedula);
 					String[] datosF = funcionario.split(",");
 					for (int i = 0; i < datosF.length; i++) {
 						System.out.println(datosF[i]);
@@ -148,6 +150,7 @@ public class ControllerUserECM {
 
 			if (condicion) {
 				setDisable(false);
+				System.out.println("ecm : " + ControllerMenu.ecm);
 				if (ControllerMenu.ecm == 2) {
 
 				} else {
@@ -177,7 +180,7 @@ public class ControllerUserECM {
 				condicion = true;
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
-				
+
 				condicion = false;
 			}
 		} else {
@@ -202,7 +205,8 @@ public class ControllerUserECM {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error");
 			alert.setHeaderText("Proceso de eliminación.");
-			alert.setContentText("El usuario con la cédula " + txtCedula.getText() + " no se puede eliminar debido a que tiene varias solicitudes asociadas.");
+			alert.setContentText("El usuario con la cédula " + txtCedula.getText()
+					+ " no se puede eliminar debido a que tiene varias solicitudes asociadas.");
 			alert.showAndWait();
 		}
 
@@ -216,8 +220,9 @@ public class ControllerUserECM {
 		// Cambiar condición por el método que verifica si existe.
 		boolean flag = true;
 
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yy");
-		LocalDate date = fecha.getValue();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YY");
+		LocalDateTime date = fecha.getValue().atStartOfDay();
+		String fechaFormato = date.format(formatter);
 
 		String tipo = cbTipoUsuario.getSelectionModel().getSelectedItem();
 		if (txtId.getText() == null || txtId.getText().equals("")) {
@@ -272,6 +277,42 @@ public class ControllerUserECM {
 			String nombre = txtNombre.getText();
 			String direccion = txtDireccion.getText();
 			String telefono = txtTelefono.getText();
+
+			boolean condicion = false;
+			if (tipo.equals("Cliente")) {
+
+				String contrasena;
+				try {
+					contrasena = Main.pc.consultaFuncionario(txtCedula.getText());
+					String[] datos = contrasena.split(",");
+					Main.pc.EditClient(id, datos[5], nombre, txtCedula.getText(), direccion, fechaFormato, telefono);
+					condicion = true;
+
+					txtId.setText(id);
+					txtNombre.setText(nombre);
+					txtDireccion.setText(direccion);
+					txtTelefono.setText(telefono);
+
+				} catch (Exception e1) {
+
+				}
+
+			} else {
+
+				try {
+					String c = Main.pc.consultaFuncionario(txtCedula.getText());
+					String[] datos = c.split(",");
+					String contrasena = datos[2];
+					txtId.setText(id);
+					txtNombre.setText(nombre);
+					txtDireccion.setText(direccion);
+					txtTelefono.setText(telefono);
+					condicion = true;
+				} catch (Exception e1) {
+
+				}
+
+			}
 
 			alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("Confirmación");
