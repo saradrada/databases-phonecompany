@@ -45,4 +45,13 @@ public class Solicitud {
 		return ConnectionDB.recive(connection, Statament);
 	}
 	
+	public static String ConsultarSolicitud_Estado(Connection connection,String ivEstado ) throws Exception {
+		String Statament = "PKCONSULTA.fConsultarSolicitud_Estado('"  + ivEstado+ "')";
+		return ConnectionDB.recive(connection, Statament);
+	}
+	
+	public static String ConsultarSolicitud_Tipo(Connection connection,String ivTipo ) throws Exception {
+		String Statament = "PKCONSULTA.fConsultarSolicitud_Tipo('"  + ivTipo+ "')";
+		return ConnectionDB.recive(connection, Statament);
+	}
 }
