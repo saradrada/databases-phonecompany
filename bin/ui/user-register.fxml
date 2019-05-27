@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="550.0" style="-fx-background-color: linear-gradient(to right, #74ebd5 0%, #9face6 100%);" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ControllerPerson">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="550.0" style="-fx-background-color: linear-gradient(to right, #74ebd5 0%, #9face6 100%);" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ControllerUserRegistration">
    <children>
       <Label layoutX="132.0" layoutY="18.0" text="Formulario Registro Persona" textFill="WHITE">
          <font>
