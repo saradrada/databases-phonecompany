@@ -21,19 +21,8 @@ public class ControllerMenu {
 	@FXML
 	private GridPane gridSolicitud;
 
-//	@FXML
-//	void agregarPersona(ActionEvent event) {
-//		Parent root;
-//		try {
-//			root = FXMLLoader.load(getClass().getResource("form-person.fxml"));
-//			Stage stage = new Stage();
-//			stage.setScene(new Scene(root));
-//			stage.show();
-//
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//	}
+	@FXML
+	private GridPane gridUsuarios;
 
 	@FXML
 	void asignarSolicitud(ActionEvent event) {
@@ -84,7 +73,8 @@ public class ControllerMenu {
 
 	@FXML
 	void gestionarUsuario(ActionEvent event) {
-
+		setVisibleGrid(gridMenu, false);
+		setVisibleGrid(gridUsuarios, true);
 	}
 
 	@FXML
@@ -94,6 +84,7 @@ public class ControllerMenu {
 
 	@FXML
 	void menu(ActionEvent event) {
+		setVisibleGrid(gridUsuarios, false);
 		setVisibleGrid(gridBaseDatos, false);
 		setVisibleGrid(gridSolicitud, false);
 		setVisibleGrid(gridMenu, true);
@@ -116,11 +107,21 @@ public class ControllerMenu {
 
 	@FXML
 	void registrarUsuario(ActionEvent event) {
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource("form-person.fxml"));
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.show();
 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@FXML
 	void initialize() {
+		setVisibleGrid(gridUsuarios, false);
 		setVisibleGrid(gridBaseDatos, false);
 		setVisibleGrid(gridSolicitud, false);
 	}
