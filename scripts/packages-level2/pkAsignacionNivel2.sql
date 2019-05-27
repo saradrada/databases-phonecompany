@@ -43,18 +43,19 @@ CREATE OR REPLACE PACKAGE BODY pkAsignacionNivel2 IS
     
     PROCEDURE pAsignacionMasiva 
       IS
-      ovDate DATE;
-    BEGIN
-    FOR i IN (SELECT SOLICITUD.NUMEROSOLICITUD,ASIGNACION.FECHA FROM ASIGNACION INNER JOIN SOLICITUD ON ASIGNACION.SOLICITUD_NUMEROSOLICITUD=SOLICITUD.NUMEROSOLICITUD
-        WHERE SOLICITUD.NUMEROSOLICITUD=i.NUMEROSOLICITUD) LOOP
-        SELECT ASIGNACION.FECHA INTO ovDate FROM ASIGNACION 
-        WHERE SOLICITUD.NUMEROSOLICITUD=i.NUMEROSOLICITUD;
-        IF SYSDATE-ovDate>=4 THEN
-            pkAsignacionNivel2.pAsignarAutomaticamente(i.NUMEROSOLICITUD);
-        END IF;
-    END LOOP;
-        exception
-            when others then raise_application_error(-20000, 'error en asignar masiva '||sqlerrm);
+  
+        cursor cuSolicitudes is
+       select NUMEROSOLICITUD, FECHA 
+       from SOLICITUD INNER JOIN ASIGNACION ON SOLICITUD.NUMEROSOLICITUD=ASIGNACION.SOLICITUD_NUMEROSOLICITUD
+       where estado = 'Pendiente'
+       and (sysdate - FECHA) >= 4 ; 
+        BEGIN
+      for solicitud in cuSolicitudes Loop
+         pasignarSolicitud(solicitud.NUMEROSOLICITUD);    
+      end loop;
+    exception
+  when others then raise_application_error(-20000, 'error en asignar masiva: '||sqlerrm);
+
     END pAsignacionMasiva;
 
    
