@@ -1,8 +1,14 @@
 CREATE OR REPLACE PACKAGE pkAtention AS
 
-PROCEDURE pAtencion ( ivCedulaFuncionario VARCHAR2, ivNumeroSolicitud VARCHAR2);
-FUNCTION fValidarSolicitudFuncionario (ivCedulaFuncionario VARCHAR2 , ivNumeroSolicitud VARCHAR2) return BOOLEAN;
-PROCEDURE patencionMasiva;
+    --Representa el procedimiento de una atención de solicitudes
+    PROCEDURE pAtencion ( ivCedulaFuncionario VARCHAR2, ivNumeroSolicitud VARCHAR2);
+    --Funcion que permite la validación de un funcionario
+    --Entrada: Cedula del funcionario
+    --Salida: Un boolean retornando true si el funcionario es valido
+    FUNCTION fValidarSolicitudFuncionario (ivCedulaFuncionario VARCHAR2 , ivNumeroSolicitud VARCHAR2) return BOOLEAN;
+    
+    --Represeta el procedimiento de atencion cuadno existen michas solicitudes
+    PROCEDURE patencionMasiva;
 
 END pkAtention;
 /
