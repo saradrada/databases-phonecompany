@@ -130,7 +130,7 @@ public class ControllerUserECM {
 					datosImprimir = new String[] { "Cliente", datosC[1], datosC[0], datosC[3], datosC[4], datosC[5] };
 				} else {
 
-					String funcionario = Main.pc.consultFuncionario(cedula);
+					String funcionario = Main.pc.consultaFuncionario(cedula);
 					String[] datosF = funcionario.split(",");
 					for (int i = 0; i < datosF.length; i++) {
 						System.out.println(datosF[i]);
