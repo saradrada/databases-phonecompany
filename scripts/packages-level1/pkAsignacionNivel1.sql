@@ -27,7 +27,7 @@ BEGIN
     AND Funcionario_cedula = ivFuncionarioCedula;
 	EXCEPTION
 	WHEN no_data_found THEN
-	   RAISE_APPLICATION_ERROR(-20000,'No se encontro asignación con número de solicitud: '||ivSolicitudNumero);
+	   RAISE_APPLICATION_ERROR(-20000,'No se encontro asignación con número de solicitud '||ivSolicitudNumero);
 END pModificarAsignacion;
 
 PROCEDURE pBorrarAsignacion(ivSolicitudNumero VARCHAR2, ivFuncionarioCedula VARCHAR2)
@@ -39,7 +39,7 @@ BEGIN
     AND asignacion.funcionario_cedula = ivFuncionarioCedula;
 	EXCEPTION
 	WHEN no_data_found THEN
-	RAISE_APPLICATION_ERROR(-20000,'No se encontro asignación con número de solicitud: '||ivSolicitudNumero);
+	RAISE_APPLICATION_ERROR(-20000,'No se encontro asignación con número de solicitud '||ivSolicitudNumero);
 END pBorrarAsignacion;
 
 FUNCTION fConsultarAsignacion(ivSolicitudNumero VARCHAR2, ivFuncionarioCedula VARCHAR2) return varchar2
@@ -60,7 +60,7 @@ BEGIN
 
 	EXCEPTION
 	WHEN no_data_found THEN
-	RAISE_APPLICATION_ERROR(-20000,'No se encontro asignación con número de solicitud: '||ivSolicitudNumero);
+	RAISE_APPLICATION_ERROR(-20000,'No se encontro asignación con número de solicitud '||ivSolicitudNumero);
 	
 END fConsultarAsignacion;
 

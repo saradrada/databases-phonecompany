@@ -41,7 +41,7 @@ BEGIN
 
 	EXCEPTION
 	WHEN no_data_found THEN
-	RAISE_APPLICATION_ERROR(-20000,'No existe ninguna solicitud con el codigo: '||ivNumeroSolicitud);
+	RAISE_APPLICATION_ERROR(-20000,'No existe ninguna solicitud con el codigo '||ivNumeroSolicitud);
 	
 END fConsultarSolicitud;
 
@@ -55,7 +55,7 @@ BEGIN
 
 	EXCEPTION
 	WHEN DUP_VAL_ON_INDEX THEN
-	RAISE_APPLICATION_ERROR(-20000,'Ya hay una solicitud con el codigo: ' || ivNumeroSolicitud);
+	RAISE_APPLICATION_ERROR(-20000,'Ya hay una solicitud con el codigo ' || ivNumeroSolicitud);
 END pInsertarSolicitud;
 
 
@@ -68,7 +68,7 @@ BEGIN
 	WHERE Solicitud.numeroSolicitud = ivNumeroSolicitud;
 	EXCEPTION
 	WHEN no_data_found THEN
-	RAISE_APPLICATION_ERROR(-20000,'No se encontro ninguna solicitud con el codigo: '||ivNumeroSolicitud);
+	RAISE_APPLICATION_ERROR(-20000,'No se encontro ninguna solicitud con el codigo '||ivNumeroSolicitud);
 END borrarSolicitud;
 
 
@@ -85,7 +85,7 @@ BEGIN
 	WHERE numerosolicitud = ivNumeroSolicitud;
 	EXCEPTION
 	WHEN no_data_found THEN
-	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ninguna solicitud con el codigo: '||ivNumeroSolicitud);
+	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ninguna solicitud con el codigo '||ivNumeroSolicitud);
 END pModificarSolicitud;
 
 
@@ -98,7 +98,7 @@ BEGIN
 	WHERE numeroSolicitud = ivNumeroSolicitud;
 	EXCEPTION
 	WHEN no_data_found THEN
-	RAISE_APPLICATION_ERROR(-20000,'No se encontro ninguna solicitud con el codigo: '||ivNumeroSolicitud);
+	RAISE_APPLICATION_ERROR(-20000,'No se encontro ninguna solicitud con el codigo '||ivNumeroSolicitud);
 END pModificarObservacionSolicitud;
 
 
@@ -111,7 +111,7 @@ BEGIN
 	WHERE numeroSolicitud = ivNumeroSolicitud;
 	EXCEPTION
 	WHEN no_data_found THEN
-	RAISE_APPLICATION_ERROR(-20000,'No se encontro ninguna solicitud con el codigo: '||ivNumeroSolicitud);
+	RAISE_APPLICATION_ERROR(-20000,'No se encontro ninguna solicitud con el codigo '||ivNumeroSolicitud);
 END pModificarEstadoSolicitud;
 
 
@@ -124,7 +124,7 @@ BEGIN
 	WHERE numeroSolicitud = ivNumeroSolicitud;
 	EXCEPTION
 	WHEN no_data_found THEN
-	RAISE_APPLICATION_ERROR(-20000,'No se encontro ninguna solicitud con el codigo: '||ivNumeroSolicitud);
+	RAISE_APPLICATION_ERROR(-20000,'No se encontro ninguna solicitud con el codigo '||ivNumeroSolicitud);
 END pModificarClienteIdSolicitud;
 
 
@@ -137,7 +137,7 @@ BEGIN
 	WHERE numeroSolicitud = ivNumeroSolicitud;
 	EXCEPTION
 	WHEN no_data_found THEN
-	RAISE_APPLICATION_ERROR(-20000,'No se encontro ninguna solicitud con el codigo: '||ivNumeroSolicitud);
+	RAISE_APPLICATION_ERROR(-20000,'No se encontro ninguna solicitud con el codigo '||ivNumeroSolicitud);
 END pModificarProductoCodigoSolicitud;
 
 
@@ -150,7 +150,7 @@ BEGIN
 	WHERE numeroSolicitud = ivNumeroSolicitud;
 	EXCEPTION
 	WHEN no_data_found THEN
-	RAISE_APPLICATION_ERROR(-20000,'No se encontro ninguna solicitud con el codigo: '||ivNumeroSolicitud);
+	RAISE_APPLICATION_ERROR(-20000,'No se encontro ninguna solicitud con el codigo '||ivNumeroSolicitud);
 END pModificarTipoCodigoSolicitud;
 
 END pkSolicitud;

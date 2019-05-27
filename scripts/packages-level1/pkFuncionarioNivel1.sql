@@ -47,7 +47,7 @@ BEGIN
 	
 	EXCEPTION
 	WHEN no_data_found THEN
-	RAISE_APPLICATION_ERROR(-20000,'No existe ningun Funcionario con la cedula:'||ivCedula);
+	RAISE_APPLICATION_ERROR(-20000,'No existe ningun Funcionario con la cedula '||ivCedula);
 	
 END fConsultarFuncionario;
 
@@ -60,7 +60,7 @@ BEGIN
 
 	EXCEPTION
 	WHEN DUP_VAL_ON_INDEX THEN
-	RAISE_APPLICATION_ERROR(-20000,'Ya existe un Funcionario con la misma cedula: ' || ivCedula);
+	RAISE_APPLICATION_ERROR(-20000,'Ya existe un Funcionario con la misma cedula ' || ivCedula);
 END pInsertarFuncionario;
 
 
@@ -75,7 +75,7 @@ BEGIN
 	
 	EXCEPTION
 	WHEN no_data_found THEN
-	RAISE_APPLICATION_ERROR(-20000,'No existe ningun Funcionario con la misma cedula:'||ivCedula);
+	RAISE_APPLICATION_ERROR(-20000,'No existe ningun Funcionario con la misma cedula '||ivCedula);
 END pEliminarFuncionario;
 
 
@@ -94,7 +94,7 @@ BEGIN
 
 	EXCEPTION
 	WHEN no_data_found THEN
-	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun Funcionario con la misma cedula: '||ivCedula);
+	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun Funcionario con la misma cedula '||ivCedula);
 
 END pModificarFuncionario;
 
@@ -109,7 +109,7 @@ BEGIN
 	
 	EXCEPTION
 	WHEN no_data_found THEN
-	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun Funcionario con la misma cedula: '||ivCedula);
+	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun Funcionario con la misma cedula '||ivCedula);
 END pModificarId;
 
 
@@ -123,7 +123,7 @@ BEGIN
 	
 	EXCEPTION
 	WHEN no_data_found THEN
-	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun Funcionario con la misma cedula: '||ivCedula);
+	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun Funcionario con la misma cedula '||ivCedula);
 END pModificarNombreFuncionario;
 
 
@@ -137,7 +137,7 @@ BEGIN
 	
 	EXCEPTION
 	WHEN no_data_found THEN
-	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun Funcionario con la misma cedula: '||ivCedula);
+	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun Funcionario con la misma cedula '||ivCedula);
 END pModificarContrasenaFuncionario;
 
 
@@ -151,7 +151,7 @@ BEGIN
 	
 	EXCEPTION
 	WHEN no_data_found THEN
-	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun Funcionario con la misma cedula: '||ivCedula);
+	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun Funcionario con la misma cedula '||ivCedula);
 END pModificarDireccionFuncionario;
 
 
@@ -165,7 +165,7 @@ BEGIN
 	
 	EXCEPTION
 	WHEN no_data_found THEN
-	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun Funcionario con la misma cedula: '||ivCedula);
+	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun Funcionario con la misma cedula '||ivCedula);
 END pModificarFechaNacimientoFuncionario;
 
 
@@ -179,7 +179,7 @@ BEGIN
 	
 	EXCEPTION
 	WHEN no_data_found THEN
-	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun Funcionario con la misma cedula: '||ivCedula);
+	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun Funcionario con la misma cedula '||ivCedula);
 END pModificarTelefonoFuncionario;
 
 END pkFuncionario;

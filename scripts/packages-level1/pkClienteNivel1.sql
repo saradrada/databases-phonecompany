@@ -41,7 +41,7 @@ BEGIN
 	
 	EXCEPTION
 	WHEN no_data_found THEN
-	RAISE_APPLICATION_ERROR(-20000,'No existe ningun cliente con la cedula:'||ivCedula);
+	RAISE_APPLICATION_ERROR(-20000,'No existe ningun cliente con la cedula '||ivCedula);
 	
 END fConsultarCliente;
 
@@ -53,7 +53,7 @@ BEGIN
     VALUES(ivId,ivNombre,ivContrasenha,ivCedula,ivDireccion,ivFecha,ivTelefono);
 	EXCEPTION
 	WHEN DUP_VAL_ON_INDEX THEN
-	RAISE_APPLICATION_ERROR(-20000,'Ya existe un cliente con la misma cedula: ' || ivCedula);
+	RAISE_APPLICATION_ERROR(-20000,'Ya existe un cliente con la misma cedula ' || ivCedula);
 END pInsertarCliente;
 
 
@@ -68,7 +68,7 @@ BEGIN
     
 	EXCEPTION
 	WHEN no_data_found THEN
-	RAISE_APPLICATION_ERROR(-20000,'No existe ningun cliente con la misma cedula:'||ivCedula);
+	RAISE_APPLICATION_ERROR(-20000,'No existe ningun cliente con la misma cedula '||ivCedula);
 END pEliminarCliente;
 
 
@@ -87,7 +87,7 @@ BEGIN
 
 	EXCEPTION
 	WHEN no_data_found THEN
-	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun cliente con la misma cedula: '||ivCedula);
+	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun cliente con la misma cedula '||ivCedula);
 
 END pModificarCliente;
 
@@ -102,7 +102,7 @@ BEGIN
 	
 	EXCEPTION
 	WHEN no_data_found THEN
-	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun cliente con la misma cedula: '||ivCedula);
+	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun cliente con la misma cedula '||ivCedula);
 END pModificarId;
 
 
@@ -116,7 +116,7 @@ BEGIN
 	
 	EXCEPTION
 	WHEN no_data_found THEN
-	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun cliente con la misma cedula: '||ivCedula);
+	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun cliente con la misma cedula '||ivCedula);
 END pModificarNombreCliente;
 
 
@@ -132,7 +132,7 @@ BEGIN
 	
 	EXCEPTION
 	WHEN no_data_found THEN
-	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun cliente con la misma cedula: '||ivCedula);
+	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun cliente con la misma cedula '||ivCedula);
 END pModificarContrasenaCliente;
 
 
@@ -146,7 +146,7 @@ BEGIN
 	
 	EXCEPTION
 	WHEN no_data_found THEN
-	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun cliente con la misma cedula: '||ivCedula);
+	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun cliente con la misma cedula '||ivCedula);
 END pModificarDireccionCliente;
 
 
@@ -159,7 +159,7 @@ BEGIN
 	
 	EXCEPTION
 	WHEN no_data_found THEN
-	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun cliente con la misma cedula'||ivCedula);
+	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun cliente con la misma cedula '||ivCedula);
 END pModificarFechaNacimientoCliente;
 
 
@@ -173,7 +173,7 @@ BEGIN
 	
 	EXCEPTION
 	WHEN no_data_found THEN
-	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun cliente con la misma cedula: '||ivCedula);
+	   RAISE_APPLICATION_ERROR(-20000,'No se encontro ningun cliente con la misma cedula '||ivCedula);
 END pModificarTelefonoCliente;
 
 END pkCliente;

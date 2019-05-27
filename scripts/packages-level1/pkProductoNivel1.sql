@@ -18,7 +18,7 @@ BEGIN
 
 	EXCEPTION
 	WHEN DUP_VAL_ON_INDEX THEN
-	RAISE_APPLICATION_ERROR(-20000,'Ya existe el producto con el código: ' || ivCodigo);
+	RAISE_APPLICATION_ERROR(-20000,'Ya existe el producto con el código ' || ivCodigo);
 END pInsertarProducto;
 
 
@@ -30,7 +30,7 @@ BEGIN
 	WHERE codigo = ivCodigo;
 	EXCEPTION
 	WHEN no_data_found THEN
-	   RAISE_APPLICATION_ERROR(-20000,'No se encontro el producto con el código : '||ivCodigo);
+	   RAISE_APPLICATION_ERROR(-20000,'No se encontro el producto con el código '||ivCodigo);
 END pModificarProducto;
 
 
@@ -42,7 +42,7 @@ BEGIN
 	WHERE codigo = ivCodigo;
 	EXCEPTION
 	WHEN no_data_found THEN
-	   RAISE_APPLICATION_ERROR(-20000,'No se encontro el producto con el código : '||ivCodigo);
+	   RAISE_APPLICATION_ERROR(-20000,'No se encontro el producto con el código '||ivCodigo);
 END pModificarDescripcionProducto;
 
 
@@ -54,7 +54,7 @@ BEGIN
 	WHERE Producto.codigo = ivCodigo;
 	EXCEPTION
 	WHEN no_data_found THEN
-	RAISE_APPLICATION_ERROR(-20000,'No se encontro el producto con el código : '||ivCodigo);
+	RAISE_APPLICATION_ERROR(-20000,'No se encontro el producto con el código '||ivCodigo);
 END pBorrarProducto;
 
 
@@ -75,7 +75,7 @@ BEGIN
 
 	EXCEPTION
 	WHEN no_data_found THEN
-	RAISE_APPLICATION_ERROR(-20000,'No existe el producto con el código : '||ivCodigo);
+	RAISE_APPLICATION_ERROR(-20000,'No existe el producto con el código '||ivCodigo);
 	
 END fConsultarProducto;
 
