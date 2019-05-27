@@ -5,9 +5,18 @@ import java.sql.*;
 public class ConnectionDB {
 	
 	public static void send(Connection con,String Statament) throws Exception {
-		PreparedStatement stmt = con.prepareStatement(Statament);
-		stmt.execute();
+		try {
+			String text = "BEGIN ";
+			text += Statament;
+			text += " END;";
+			PreparedStatement stmt = con.prepareStatement(text);
+			stmt.execute();
+			
+		} catch (Exception e) {
+			throw new Exception(e.getMessage().split("\n")[0].split(":")[1]);
+		}
 	}
+	
 	
 	public static Connection createConnection(String username, String password) throws Exception{
 		Connection c  = null;
