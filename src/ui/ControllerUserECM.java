@@ -67,6 +67,18 @@ public class ControllerUserECM {
 	private GridPane gridModificarUsuario;
 
 	@FXML
+	private TextField txtId;
+
+	@FXML
+	private TextField txtNombre;
+
+	@FXML
+	private TextField txtDireccion;
+
+	@FXML
+	private TextField txtTelefono;
+
+	@FXML
 	private DatePicker fecha;
 
 	@FXML
@@ -136,6 +148,32 @@ public class ControllerUserECM {
 
 	@FXML
 	void modificarUsuario(ActionEvent event) {
+
+		String cedula = txtCedula.getText();
+		boolean flag = true;
+
+		if (cedula == null || cedula.equals("")) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error");
+			flag = false;
+			alert.setHeaderText("Error en la cédula.");
+			alert.setContentText("La cédula no puede estar vacía.");
+			alert.showAndWait();
+		}
+
+		if (flag) {
+			// Cambiar condición por el método que verifica si existe.
+			boolean condicion = false;
+
+			if (condicion) {
+				existeUsuario = true;
+			}
+
+			if (existeUsuario) {
+				setDisable(false);
+
+			}
+		}
 
 	}
 

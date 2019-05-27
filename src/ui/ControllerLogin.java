@@ -33,29 +33,27 @@ public class ControllerLogin {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("Error");
 		boolean flag = true;
-		String user = "" , password = "";
+		String user = "", password = "";
 		if (txtUser.getText() == null || txtUser.getText().equals("")) {
 			flag = false;
 			alert.setHeaderText("Error en el usuario.");
 			alert.setContentText("El usuario no puede estar vacío.");
 			alert.showAndWait();
-			
+
 		} else {
-			 user = txtUser.getText();
+			user = txtUser.getText();
 		}
 		if (txtPassword.getText() == null || txtPassword.getText().equals("")) {
 			flag = false;
 			alert.setHeaderText("Error en la contraseña.");
 			alert.setContentText("La contraseña no puede estar vacía.");
 			alert.showAndWait();
-			
+
 		} else {
-			 password = txtPassword.getText();
+			password = txtPassword.getText();
 		}
 
 		if (flag) {
-
-			System.out.println(user + "  " + password); 
 			Parent root;
 			try {
 				root = FXMLLoader.load(getClass().getResource("menu.fxml"));

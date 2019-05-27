@@ -130,10 +130,10 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField maxHeight="-Infinity" prefHeight="20.0" prefWidth="139.0" GridPane.rowIndex="1" />
-            <TextField maxHeight="-Infinity" prefHeight="20.0" GridPane.rowIndex="2" />
-            <TextField maxHeight="-Infinity" prefHeight="20.0" GridPane.rowIndex="3" />
-            <TextField maxHeight="-Infinity" prefHeight="20.0" GridPane.rowIndex="5" />
+            <TextField fx:id="txtId" maxHeight="-Infinity" prefHeight="20.0" prefWidth="139.0" GridPane.rowIndex="1" />
+            <TextField fx:id="txtNombre" maxHeight="-Infinity" prefHeight="20.0" GridPane.rowIndex="2" />
+            <TextField fx:id="txtDireccion" maxHeight="-Infinity" prefHeight="20.0" GridPane.rowIndex="3" />
+            <TextField fx:id="txtTelefono" maxHeight="-Infinity" prefHeight="20.0" GridPane.rowIndex="5" />
             <DatePicker fx:id="fecha" GridPane.rowIndex="4" />
             <ChoiceBox fx:id="cbTipoUsuario" prefWidth="150.0" />
          </children>
