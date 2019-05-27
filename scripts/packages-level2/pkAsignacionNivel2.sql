@@ -28,7 +28,7 @@ CREATE OR REPLACE PACKAGE BODY pkAsignacionNivel2 IS
         END IF;
     END LOOP;
         exception
-         when others then raise_application_error(-20000, 'error en asignar solicitud: '||sqlerrm);
+         when others then raise_application_error(-20000, 'error en asignar solicitud '||sqlerrm);
     end pasignarSolicitud;
 
  PROCEDURE pAsignacionDirecta(vNumeroSolicitud IN SOLICITUD.NUMEROSOLICITUD%TYPE, 
@@ -38,7 +38,7 @@ CREATE OR REPLACE PACKAGE BODY pkAsignacionNivel2 IS
         PKASIGNACION.pInsertarAsignacion(sysdate, vNumeroSolicitud,vCedulaFuncionario);
         UPDATE SOLICITUD SET SOLICITUD.ESTADO = 'Asignada' WHERE SOLICITUD.NumeroSolicitud=vNumeroSolicitud;
         exception 
-        when others then raise_application_error(-20000, 'Ocurrio un error en asignacion directa: '||sqlerrm);
+        when others then raise_application_error(-20000, 'Ocurrio un error en asignacion directa '||sqlerrm);
     END pAsignacionDirecta; 
     
     PROCEDURE pAsignacionMasiva 
@@ -51,7 +51,7 @@ CREATE OR REPLACE PACKAGE BODY pkAsignacionNivel2 IS
         END IF;
     END LOOP;
         exception
-            when others then raise_application_error(-20000, 'error en asignar masiva: '||sqlerrm);
+            when others then raise_application_error(-20000, 'error en asignar masiva '||sqlerrm);
     END pAsignacionMasiva;
 
    
