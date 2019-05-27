@@ -1,25 +1,47 @@
 --Paquete encargado de manejar los procedimientos necesario del Funcionario de la compañia
 CREATE OR REPLACE PACKAGE pkFuncionario AS
+
     --Procedimiento encargado de insertar un funcionario a la base de datos con todos sus datos basicos.
+    --Entrada: Id del Funcionario,Contrasenha del Funcionario, Nombre del Funcionario, Cedula del Funcionario, Direccion del Funcionario, Fecha de nacimiento del Funcionario, Telefono del Funcionario
     PROCEDURE pInsertarFuncionario(ivId VARCHAR2,ivContrasena VARCHAR2,ivNombre VARCHAR2, ivCedula VARCHAR2,ivDireccion VARCHAR2, ivFecha DATE, ivTelefono VARCHAR2);
+    
     --Procedimiento encargado modifica toda la informacion de un funcionario e especifico a partir de su id.
+    --Entrada: Id del Funcionario,Contrasenha del Funcionario, Nombre del Funcionario, Cedula del Funcionario, Direccion del Funcionario, Fecha de nacimiento del Funcionario, Telefono del Funcionario
     PROCEDURE pModificarFuncionario(ivId VARCHAR2, ivContrasena VARCHAR2,ivNombre VARCHAR2,ivCedula VARCHAR2,ivDireccion VARCHAR2, ivFecha DATE, ivTelefono VARCHAR2);
+    
     --Procedimiento encargado de modficar el id de un funcionario a partir de su cedula.
+    --Entrada: Cedula del Funcionario, Id del Funcionario
     PROCEDURE pModificarId(ivCedula VARCHAR2 , ivNuevaId VARCHAR2);
-   --Procedimiento encargado de modficar el nombre de un funcionario a partir de su cedula.
+    
+    --Procedimiento encargado de modficar el nombre de un funcionario a partir de su cedula.
+    --Entrada: Cedula del Funcionario, Nombre del Funcionario
     PROCEDURE pModificarNombreFuncionario (ivCedula VARCHAR2, ivNuevoNombre VARCHAR2);
+    
     --Procedimiento encargado de modficar la contraseña de un funcionario a partir de su cedula.
+    --Entrada: Cedula del Funcionario, Contraseña del Funcionario
     PROCEDURE pModificarContrasenaFuncionario (ivCedula VARCHAR2 , ivNuevaContrasena VARCHAR2);
+    
     --Procedimiento encargado de modficar la direccion de un funcionario a partir de su cedula.
+    --Entrada: Cedula del Funcionario, Direccion del Funcionario
     PROCEDURE pModificarDireccionFuncionario (ivCedula VARCHAR2, ivNuevaDireccion VARCHAR2);
+    
     --Procedimiento encargado de modficar la fecha de nacimiento de un funcionario a partir de su cedula.
+    --Entrada: Cedula del Funcionario, Fecha de nacimiento del Funcionario
     PROCEDURE pModificarFechaNacimientoFuncionario (ivCedula VARCHAR2 , ivNuevaFecha DATE);
+    
     --Procedimiento encargado de modficar el telefono de un funcionario a partir de su cedula.
+    --Entrada: Cedula del Funcionario, Telefono del Funcionario
     PROCEDURE pModificarTelefonoFuncionario(ivCedula VARCHAR2, ivNuevoTelefono VARCHAR2);
+    
     --Procedimiento encargado de eliminar a un funcionario a partir de su cedula.
+    --Entrada: Cedula del Funcionario
     PROCEDURE pEliminarFuncionario(ivCedula VARCHAR2);
+    
     --Funcion encargada de consultar toda la informacion de un funcionario a partir de su cedula.
+    --Entrada: Cedula del Funcionario
+    --Salida: Datos del Funcionario que se desea consultar
     FUNCTION fConsultarFuncionario(ivCedula VARCHAR2) return VARCHAR2;
+    
 END pkFuncionario;
 /
 

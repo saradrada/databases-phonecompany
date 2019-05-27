@@ -1,13 +1,42 @@
 CREATE OR REPLACE PACKAGE pkSolicitud AS
+   
+    --Procedimiento .
+    --Entrada: 
     PROCEDURE pInsertarSolicitud( ivNumeroSolicitud VARCHAR2,ivObservacion  VARCHAR2,ivEstado  VARCHAR2,ivProductoCodigo VARCHAR2,ivCedulaCliente VARCHAR2,ivTipoCodigo VARCHAR2);
+    
+    --Procedimiento .
+    --Entrada: 
     PROCEDURE pModificarSolicitud( ivNumeroSolicitud VARCHAR2,ivObservacion  VARCHAR2,ivEstado  VARCHAR2,ivProductoCodigo VARCHAR2,ivCedulaCliente VARCHAR2,ivTipoCodigo VARCHAR2);
+    
+    --Procedimiento .
+    --Entrada: 
     PROCEDURE pModificarObservacionSolicitud(ivNumeroSolicitud VARCHAR2, ivObservacion VARCHAR2);
+    
+    --Procedimiento .
+    --Entrada: 
     PROCEDURE pModificarEstadoSolicitud(ivNumeroSolicitud VARCHAR2, ivEstado VARCHAR2);
+    
+    --Procedimiento .
+    --Entrada: 
     PROCEDURE pModificarClienteIdSolicitud(ivNumeroSolicitud VARCHAR2, ivCedulaCliente VARCHAR2);
+    
+    --Procedimiento .
+    --Entrada: 
     PROCEDURE pModificarProductoCodigoSolicitud(ivNumeroSolicitud VARCHAR2, ivProductoCodigo VARCHAR2);
+    
+    --Procedimiento .
+    --Entrada: 
     PROCEDURE pModificarTipoCodigoSolicitud(ivNumeroSolicitud VARCHAR2, ivTipoCodigo VARCHAR2);
+    
+    --Procedimiento .
+    --Entrada: 
     PROCEDURE borrarSolicitud(ivNumeroSolicitud VARCHAR2);
+    
+    --Función que permite consultar una solicitud en la base de datos. 
+    --Entrada: Numero de solicitud
+    --Salida: Datos de la solicitud que se desea consultar
     FUNCTION fConsultarSolicitud (ivNumeroSolicitud VARCHAR2) return varchar2;
+    
 END pkSolicitud;
 /
 

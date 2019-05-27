@@ -1,21 +1,39 @@
 --Paquete encargado de manejar los procedimientos necesario del ProductoCliente de la compañia.
 CREATE OR REPLACE PACKAGE pkProductoCliente AS
+    
     --Procedimiento encargado de insertar un ProductoCliente a la base de datos con todos sus datos basicos.
+    --Entrada: Numero de Producto, Fecha de Citacion, Fecha de Retiro, Codigo del Producto, Cedula del Cliente
     PROCEDURE pInsertarProductoCliente( ivNumeroProducto VARCHAR2,ivFechaCitacion Date,ivFechaRetiro Date, ivProductoCodigo VARCHAR2,ivCedulaCliente VARCHAR2);
+    
     --Procedimiento encargado modificar toda la informacion de un producto-cliente e especifico a partir de su número de producto.
+    --Entrada: Numero de Producto, Fecha de Citacion, Fecha de Retiro, Codigo del Producto, Cedula del Cliente
     PROCEDURE pModificarProductoCliente( ivNumeroProducto VARCHAR2,ivFechaCitacion Date,ivFechaRetiro Date, ivProductoCodigo VARCHAR2,ivCedulaCliente VARCHAR2);
+    
     --Procedimiento encargado de modficar la fecha de citación del producto-cliente a partir de su número de producto.
+    --Entrada: Numero de Producto, Fecha de Citacion
     PROCEDURE pModificarFechaCitacionProductoCliente (ivNumeroProducto VARCHAR2,ivFechaCitacion Date);
+    
     --Procedimiento encargado de modficar la fecha de retiro del producto-cliente a partir de su número de producto.
+    --Entrada: Numero de Producto, Fecha de Retiro
     PROCEDURE pModificarFechaRetiroProductoCliente (ivNumeroProducto VARCHAR2,ivFechaRetiro Date);
+    
     --Procedimiento encargado de modficar el código del producto del producto-cliente a partir de su número de producto.
+    --Entrada: Numero de Producto, Codigo del Producto
     PROCEDURE pModificarProductoCodigoProductoCliente (ivNumeroProducto VARCHAR2, ivProductoCodigo VARCHAR2);
+    
     --Procedimiento encargado de modficar la cédula del cliente del producto-cliente a partir de su número de producto.
+    --Entrada: Numero de Producto, Cedula del Cliente
     PROCEDURE pModificarClienteCedulaProductoCliente (ivNumeroProducto VARCHAR2, ivCedulaCliente VARCHAR2);
+    
     --Procedimiento encargado de eliminar a un producto-cliente a partir de su cedula.
+    --Entrada: Numero de Producto,
     PROCEDURE pBorrarProductoCliente(ivNumeroProducto VARCHAR2);
+    
     --Funcion encargada de consultar toda la informacion de un producto-cliente a partir de su número de producto.
+    --Entrada: Numero de Producto,
+    --Salida: Datos del funcionario que se desea consultar
     FUNCTION fConsultarProductoCliente (ivNumeroProducto VARCHAR2) return varchar2;
+
 END pkProductoCliente;
 /
 

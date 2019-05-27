@@ -1,25 +1,47 @@
 --Paquete encargado de manejar los procedimientos necesario del Cliente de la compañia.
     CREATE OR REPLACE PACKAGE pkCliente AS
+    
     --Procedimiento encargado de insertar un cliente a la base de datos con todos sus datos basicos.
+    --Entrada: Id del cliente,Contrasenha del cliente, Nombre del cliente, Cedula del cliente, Direccion del cliente, Fecha de nacimiento del cliente, Telefono del cliente
     PROCEDURE pInsertarCliente(ivId VARCHAR2,ivContrasenha VARCHAR2,ivNombre VARCHAR2, ivCedula VARCHAR2,ivDireccion VARCHAR2, ivFecha DATE, ivTelefono VARCHAR2);
+    
     --Procedimiento encargado modificar toda la informacion de un cliente e especifico a partir de su id.
+    --Entrada: Id del cliente,Contrasenha del cliente, Nombre del cliente, Cedula del cliente, Direccion del cliente, Fecha de nacimiento del cliente, Telefono del cliente
     PROCEDURE pModificarCliente(ivId VARCHAR2, ivContrasenha VARCHAR2,ivNombre VARCHAR2,ivCedula VARCHAR2,ivDireccion VARCHAR2, ivFecha DATE, ivTelefono VARCHAR2);
+    
     --Procedimiento encargado de modficar el nombre de un cliente a partir de su cedula.
+    --Entrada: Cedula del cliente, Nombre del cliente
     PROCEDURE pModificarNombreCliente (ivCedula VARCHAR2, ivNuevoNombre VARCHAR2);
+    
     --Procedimiento encargado de modficar el id de un cliente a partir de su cedula.
+    --Entrada: Cedula del cliente, ID del cliente
     PROCEDURE pModificarId(ivCedula VARCHAR2 , ivNuevaId VARCHAR2);
+    
     --Procedimiento encargado de modficar la contraseña de un cliente a partir de su cedula.
+    --Entrada: Cedula del cliente, Contrasenha del cliente
     PROCEDURE pModificarContrasenaCliente (ivCedula VARCHAR2 , ivNuevaContrasena VARCHAR2);
+    
     --Procedimiento encargado de modficar la direccion de un cliente a partir de su cedula.
+    --Entrada: Cedula del cliente, Direccion del cliente
     PROCEDURE pModificarDireccionCliente (ivCedula VARCHAR2, ivNuevaDireccion VARCHAR2);
+    
     --Procedimiento encargado de modficar la fecha de nacimiento de un cliente a partir de su cedula.
+    --Entrada: Cedula del cliente, Fecha de nacimiento del cliente
     PROCEDURE pModificarFechaNacimientoCliente (ivCedula VARCHAR2 , ivNuevaFecha DATE);
+   
     --Procedimiento encargado de modficar el telefono de un cliente a partir de su cedula.
+    --Entrada: Cedula del cliente, Telefono del cliente
     PROCEDURE pModificarTelefonoCliente (ivCedula VARCHAR2, ivNuevoTelefono VARCHAR2);
+   
     --Procedimiento encargado de eliminar a un cliente a partir de su cedula.
+    --Entrada: Cedula del cliente
     PROCEDURE pEliminarCliente (ivCedula VARCHAR2);
+   
     --Funcion encargada de consultar toda la informacion de un cliente a partir de su cedula.
+    --Entrada: Cedula del cliente
+    --Salida: Datos del cliente que se desea consultar
     FUNCTION fConsultarCliente(ivCedula VARCHAR2) return VARCHAR2;
+    
     END pkCliente;
     /
 
