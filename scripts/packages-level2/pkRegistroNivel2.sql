@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE pkRegistro AS
 
 PROCEDURE pRegistrarSolicitudCreacion (ivProductoCodigo VARCHAR2, ivCedulaCliente VARCHAR2,ivObservacion VARCHAR2,ivTipoProducto VARCHAR2);
-PROCEDURE pRegistrarSolicitudModificacion (ivProductoCodigo VARCHAR2, ivCedulaCliente VARCHAR2, ivObservacion VARCHAR2, ivTipoProducto VARCHAR2 );
+PROCEDURE pRegistrarSolicitudModificacion (ivProductoCodigo VARCHAR2, ivCedulaCliente VARCHAR2, ivObservacion VARCHAR2);
 PROCEDURE pRegistrarSolicitudCancelacion ( ivProductoCodigo VARCHAR2 , ivCedulaCliente VARCHAR2 , ivObservacion VARCHAR2);
 PROCEDURE pRegistrarSolicitudReclamo ( ivProductoCodigo VARCHAR2 , ivCedulaCliente VARCHAR2, ivObservacion VARCHAR2);
 PROCEDURE pRegistrarCliente (ivId VARCHAR2,ivContrasenha VARCHAR2,ivNombre VARCHAR2, ivCedula VARCHAR2,ivDireccion VARCHAR2, ivFecha DATE, ivTelefono VARCHAR2);
@@ -35,17 +35,17 @@ IS
 	vNumero VARCHAR2(50);
 BEGIN
     vNumero := fConsultarNumLibre;
-	pkSolicitud.pInsertarSolicitud( vNumero,ivObservacion, 'Nuevo' ,ivProductoCodigo, ivCedulaCliente , 'A0'); -- Tipo de registro, quemado en las tablas
+	pkSolicitud.pInsertarSolicitud( vNumero,ivObservacion, 'Nuevo' ,ivProductoCodigo, ivCedulaCliente , 'Creacion'); -- Tipo de registro, quemado en las tablas
 END pRegistrarSolicitudCreacion;
 
 
 
-PROCEDURE pRegistrarSolicitudModificacion (ivProductoCodigo VARCHAR2, ivCedulaCliente VARCHAR2, ivObservacion VARCHAR2, ivTipoProducto VARCHAR2 )
+PROCEDURE pRegistrarSolicitudModificacion (ivProductoCodigo VARCHAR2, ivCedulaCliente VARCHAR2, ivObservacion VARCHAR2 )
 IS
 	vNumero VARCHAR2(50);
 BEGIN
     vNumero := fConsultarNumLibre();
-	pkSolicitud.pInsertarSolicitud( vNumero, ivObservacion, 'Nuevo' ,ivProductoCodigo, ivCedulaCliente , 'B1'); -- Tipo de registro, quemado en las tablas
+	pkSolicitud.pInsertarSolicitud( vNumero, ivObservacion, 'Nuevo' ,ivProductoCodigo, ivCedulaCliente , 'Modificacion'); -- Tipo de registro, quemado en las tablas
 END pRegistrarSolicitudModificacion;
 
 
@@ -55,7 +55,7 @@ IS
 	vNumero VARCHAR2(50);
 BEGIN
     vNumero := fConsultarNumLibre();	
-	pkSolicitud.pInsertarSolicitud( vNumero, ivObservacion, 'Nuevo' ,ivProductoCodigo, ivCedulaCliente , 'C2'); -- Tipo de registro, quemado en las tablas
+	pkSolicitud.pInsertarSolicitud( vNumero, ivObservacion, 'Nuevo' ,ivProductoCodigo, ivCedulaCliente , 'Cancelacion'); -- Tipo de registro, quemado en las tablas
 END pRegistrarSolicitudCancelacion;
 
 
@@ -65,7 +65,7 @@ IS
 	vNumero VARCHAR2(50);
 BEGIN
     vNumero := fConsultarNumLibre();
-	pkSolicitud.pInsertarSolicitud( vNumero, ivObservacion, 'Nuevo' ,ivProductoCodigo, ivCedulaCliente , 'D3'); -- Tipo de registro, quemado en las tablas
+	pkSolicitud.pInsertarSolicitud( vNumero, ivObservacion, 'Nuevo' ,ivProductoCodigo, ivCedulaCliente , 'Reclamo'); -- Tipo de registro, quemado en las tablas
 END pRegistrarSolicitudReclamo;
 
 

@@ -26,7 +26,7 @@ public class Client {
 	}
 	
 	public static String consultClient(Connection connection, String ivCedula) throws Exception {
-		String Statament = "pkConsulta.fConsultarCliente('" + ivCedula + "');";
+		String Statament = "pkConsulta.fConsultarCliente('" + ivCedula + "')";
 		return ConnectionDB.recive(connection, Statament);
 	}
 
