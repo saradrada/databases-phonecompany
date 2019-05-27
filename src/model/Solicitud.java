@@ -5,6 +5,28 @@ import java.sql.Connection;
 public class Solicitud {
 
 	/**
+	 * Asigna la solicitud con el numero de solicitud del parametro
+	 * 
+	 * @param connection SQL.connection object
+	 * @throws Exception Error enviado desde la base de datos
+	 */
+	public static void asignarSolicitud(Connection connection, String ivNumeroSolicitud) throws Exception {
+		String Statament = "pkAsignacionNivel2.pAsignarSolicitud('" + ivNumeroSolicitud + "');";
+		ConnectionDB.send(connection, Statament);
+	}
+	
+	/**
+	 * Atiende la solicitud con el numero de solicitud del parametro
+	 * 
+	 * @param connection SQL.connection object
+	 * @throws Exception Error enviado desde la base de datos
+	 */
+	public static void atiendeSolicitud(Connection connection, String ivNumeroSolicitud) throws Exception {
+		String Statament = "pkAtention.pAtencion('" + ivNumeroSolicitud + "');";
+		ConnectionDB.send(connection, Statament);
+	}
+	
+	/**
 	 * Elimina la solicitud con el numero de solicitud del parametro
 	 * 
 	 * @param connection SQL.connection object
