@@ -13,7 +13,7 @@ public class Client {
 		ConnectionDB.send(connection, Statament);
 	}
 
-	public static void deletesCLient(Connection connection, String ivCedula) throws Exception {
+	public static void deletesClient(Connection connection, String ivCedula) throws Exception {
 		String Statament = "pkEliminar.pEliminarCliente('" + ivCedula + "');";
 		ConnectionDB.send(connection, Statament);
 	}
@@ -24,4 +24,10 @@ public class Client {
 				+ ivCedula + "','" + ivDireccion + "','" + ivFecha + "','" + ivTelefono + "');";
 		ConnectionDB.send(connection, Statament);
 	}
+	
+	public static String consultClient(Connection connection, String ivCedula) throws Exception {
+		String Statament = "pkConsulta.fConsultarCliente('" + ivCedula + "');";
+		return ConnectionDB.recive(connection, Statament);
+	}
+
 }
